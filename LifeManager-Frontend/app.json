@@ -1,0 +1,12 @@
+{
+  "name": "LifeManager-Frontend",
+  "displayName": "LifeManager-Frontend",
+  "expo": {
+    "name": "LifeManager-Frontend",
+    "slug": "LifeManager-Frontend",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
