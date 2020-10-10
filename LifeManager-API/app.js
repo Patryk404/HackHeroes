@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const AuthRoute = require('./routes/Auth');
+const CaloriesRoute = require('./routes/Calories');
 
 app.use(bodyParser.json());
 
@@ -16,7 +17,10 @@ app.use((req, res, next) => {//cors policy
     next();
   });
 
+app.use('/calories',CaloriesRoute);
+
 app.use('/auth',AuthRoute);
+
 
 app.use((error,req,res,next)=>{//error handling
   console.log(error);

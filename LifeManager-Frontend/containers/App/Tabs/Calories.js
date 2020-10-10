@@ -4,7 +4,7 @@ import {Text} from 'react-native';
 
 class Calories extends React.Component {
     componentDidMount(){
-        console.log(this.props.logged,this.props.token);
+        
     }
 
     render(){

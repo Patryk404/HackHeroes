@@ -11,6 +11,22 @@ const accountSchema = new mongoose.Schema({
     password: { 
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        required: true
+    },
+    cups_of_water: {
+        type: Number,
+        required: true
+    },
+    calories: {
+        type: Number,
+        required: true
+    },
+    sleep: {
+        type: Number,
+        required: true
     }
 });
 

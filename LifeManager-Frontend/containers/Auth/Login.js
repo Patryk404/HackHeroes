@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,ActivityIndicator,StyleSheet} from 'react-native';
 import {Button,Input} from 'react-native-elements';
 
 import * as actions from '../../store/actions/index';
@@ -11,7 +11,9 @@ import {URL} from '../../public/url';
 class Login extends React.Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        loading: false,
+        error: ''
     };
 
     handleInputChange =(name,value)=>{
@@ -21,6 +23,9 @@ class Login extends React.Component {
     };
 
     handleButtonLogin=()=>{
+        this.setState({
+            loading: true
+        });
         axios.post(URL+'/auth/login',{
             username: this.state.username,
             password: this.state.password
@@ -28,10 +33,13 @@ class Login extends React.Component {
             'Content-Type': 'application/json'
           }})
         .then(response=>{
+            this.setState({loading: false});
             this.props.onLogged(response.data.token);
             this.props.navigation.navigate('MainApp');
         })
         .catch(err=>{
+            this.setState({loading: false});
+            this.setState({error: err});
             console.log(err);
         });
     };
@@ -46,9 +54,17 @@ class Login extends React.Component {
                 <Text style={styles.text}>Manage Your Life😉</Text>
                 <Input placeholder='Username' style={styles.input} value={this.state.username} onChangeText={value=>this.handleInputChange('username',value)}/>
                 <Input placeholder='Password' style={styles.input} secureTextEntry={true} value={this.state.password} onChangeText={value=>this.handleInputChange('password',value)}/>
+                {this.state.loading ? 
+                <ActivityIndicator size="large" color="#0000ff" style={{marginTop: 40}}/> :
                 <View style={styles.button} >
                 <Button title="Login" onPress={this.handleButtonLogin}/>
                 </View>
+                }
+                {
+                    this.state.error ? 
+                    <Text>Wrong Username or Password🤔</Text>
+                    : null
+                }
                 <Text style={{marginTop: 30}}>No Account? <Text onPress={this.handleButtonRegister} style={{color: 'blue'}}>Register Now</Text></Text>
             </View>
         );
