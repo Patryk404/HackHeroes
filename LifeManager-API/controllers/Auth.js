@@ -33,6 +33,7 @@ module.exports.signUp= async (req,res,next)=>{
         date: new Date(),
         cups_of_water: 0,
         calories: 0,
+        calories_range: 2500,
         sleep: 0});
     const token = await jwt.sign({id: account._id.toString()},"secret_",{expiresIn: '1h'}); // "secret_" też może być w zmiennej środowiskowej
     await account.save();

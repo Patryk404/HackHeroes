@@ -24,6 +24,10 @@ const accountSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    calories_range: {
+        type: Number,
+        required: true
+    },
     sleep: {
         type: Number,
         required: true
