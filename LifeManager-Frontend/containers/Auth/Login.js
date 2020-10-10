@@ -1,6 +1,13 @@
 import React from 'react'
 import {View,Text,StyleSheet} from 'react-native';
 import {Button,Input} from 'react-native-elements';
+
+import * as actions from '../../store/actions/index';
+import {connect} from 'react-redux';
+
+import axios from 'axios';
+import {URL} from '../../public/url';
+
 class Login extends React.Component {
     state = {
         username: '',
@@ -14,7 +21,19 @@ class Login extends React.Component {
     };
 
     handleButtonLogin=()=>{
-        console.log(this.state);
+        axios.post(URL+'/auth/login',{
+            username: this.state.username,
+            password: this.state.password
+        },{headers:{
+            'Content-Type': 'application/json'
+          }})
+        .then(response=>{
+            this.props.onLogged(response.data.token);
+            this.props.navigation.navigate('MainApp');
+        })
+        .catch(err=>{
+            console.log(err);
+        });
     };
 
     handleButtonRegister=()=>{
@@ -57,5 +76,11 @@ const styles = StyleSheet.create({
         marginTop: 40
     }
   });
+
+  const mapDispatchToProps = dispatch =>{
+      return {
+    onLogged: token=>dispatch(actions.loggedInto(token))
+    };
+  };   
   
-export default Login;
+export default connect(null,mapDispatchToProps)(Login);
