@@ -1,5 +1,7 @@
 import React from 'react';
-import {SafeAreaView,ScrollView,Text,StyleSheet} from 'react-native';
+import {SafeAreaView,ScrollView,View,StyleSheet} from 'react-native';
+import {Button} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {connect} from 'react-redux';
 
@@ -13,9 +15,13 @@ class ProductList extends React.Component {
         products: []
     }
     componentDidMount() {
+        this.update();
+    }
+
+    update=()=>{
         axios.get(URL+'/calories/food',{
             headers:{
-                "Authorization": "Bearer "+ props.token,
+                "Authorization": "Bearer "+ this.props.token,
                 "Content-Type": "application/json"
             }
         })
@@ -28,38 +34,41 @@ class ProductList extends React.Component {
             console.log(err);
         })
     }
+
+    addProductButtonHandler = ()=>{
+        this.props.navigation.navigate('AddProduct');
+    };
+
     render(){
         return(
-            <>
-                <Text style={styles.mainText}>Products:</Text>
                 <SafeAreaView style={styles.container}>
+                <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{alignSelf: 'center'}}/>
                 <ScrollView>
                     {this.state.products.map(product=>{
                         return(
                             <Product key={product._id} _id={product._id} title={product.title} calories={product.calories}/>
                         );
                     })}
+                <View style={styles.button}>
+                    <Button onPress={this.addProductButtonHandler} title="Add Product"/>
+                </View>
                 </ScrollView>
                 </SafeAreaView>
-            </>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        width: '80%',
-        height: '40%',
-        borderWidth: 2,
+        width: '100%',
+        height: '100%',
         backgroundColor: '#fff',
-        borderColor: '#4C8BF5',
-        borderRadius: 10,
-        alignItems: 'center'
-    }, 
-    mainText: {
+        alignSelf: 'center',
+    },
+    button: {
+        width: '50%',
         marginTop: 30,
-        marginBottom: 10,
-        fontSize: 30
+        alignSelf: 'center'
     }
 });
 

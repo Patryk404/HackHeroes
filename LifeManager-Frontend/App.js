@@ -7,7 +7,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import Login from './containers/Auth/Login';
 import Register from './containers/Auth/Register';
 import MainApp from './containers/App/Navigators/Main';
-import ProductList from './containers/App/Products/ProductList';
 
 import authReducer from './store/reducers/auth';
 
@@ -22,7 +21,6 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
         <Stack.Screen name="Register" component={Register} options={{headerStyle:{backgroundColor: '#2587DD'}}}/>
         <Stack.Screen name="MainApp" component={MainApp} options={{headerShown: false}}/>
-        <Stack.Screen name="Products" component={ProductList}/>
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>

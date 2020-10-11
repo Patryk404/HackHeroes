@@ -3,9 +3,27 @@ import {StyleSheet,View,Text} from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import axios from 'axios';
+import {URL} from '../../../public/url';
+
+import {connect} from 'react-redux';
+
 const Product = (props)=>{
     const buttonHandler = ()=>{
-        console.log(props._id);
+        axios.post(URL+'/calories/eatfood',{
+            id: props._id
+        },{
+            headers:{
+                "Authorization": "Bearer "+props.token,
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response=>{
+            props.navigation.goBack();
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
     return (
     <View style={styles.productContainer}>
@@ -28,21 +46,29 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderColor: '#bbdefb',
         backgroundColor: '#fafafa',
-        width: '100%'
+        width: '100%',
     },
     productText:{
         margin: 10,
         fontSize: 20
     },
     productButton:{
+        position: 'absolute',
+        right: 50,
         margin: 10,
         width: '20%'
     },
     productTrash:{
-        marginLeft: 10,
+        position: 'absolute',
+        right: 30,
         color: '#4C8BF5'
     },
 }); 
 
+const mapStateToProps=state=>{
+    return {
+        token: state.token
+    }
+};
 
-export default Product;
+export default connect(mapStateToProps)(Product);
