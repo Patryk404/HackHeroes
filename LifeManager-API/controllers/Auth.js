@@ -35,7 +35,7 @@ module.exports.signUp= async (req,res,next)=>{
         calories: 0,
         calories_range: 2500,
         sleep: 0});
-    const token = await jwt.sign({id: account._id.toString()},"secret_",{expiresIn: '1h'}); // "secret_" też może być w zmiennej środowiskowej
+    const token = await jwt.sign({id: account._id.toString()},"secret_"/*,{expiresIn: '1h'}*/); // "secret_" też może być w zmiennej środowiskowej
     await account.save();
     res.status(201).json({
         message: 'Succesfully created account',
@@ -61,9 +61,9 @@ module.exports.login= async (req,res,next)=>{
     {
         const token = await jwt.sign({
             id: account._id.toString()
-        },"secret_",{
+        },"secret_"/*,{
             expiresIn: '1h'
-        });
+        }*/);
         res.status(200).json({
             message: 'Logged',
             token: token

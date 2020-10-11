@@ -5,6 +5,7 @@ module.exports.CheckDate = async (req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
     const older = checkDate(new Date(),account.date);
     if(older){
+        next(); // DZIAŁA
     //reseting stuff and make history new Date?
     }
     else {
