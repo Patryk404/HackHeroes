@@ -46,7 +46,7 @@ class ProductList extends React.Component {
                 <ScrollView>
                     {this.state.products.map(product=>{
                         return(
-                            <Product key={product._id} _id={product._id} title={product.title} calories={product.calories}/>
+                            <Product navigation={this.props.navigation} key={product._id} _id={product._id} title={product.title} calories={product.calories}/>
                         );
                     })}
                 <View style={styles.button}>

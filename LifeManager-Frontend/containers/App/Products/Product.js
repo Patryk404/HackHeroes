@@ -25,6 +25,22 @@ const Product = (props)=>{
             console.log(err);
         })
     }
+    const deleteHandler = ()=>{
+        axios.delete(URL+'/calories/food',{
+            headers:{
+                "Authorization": "Bearer "+props.token,
+                "Content-Type": "application/json",
+                "id": props._id
+            }   
+        })
+        .then(response=>{
+            props.navigation.goBack();
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    };
+
     return (
     <View style={styles.productContainer}>
     <Text style={styles.productText}>{props.title}</Text>
@@ -32,7 +48,7 @@ const Product = (props)=>{
     <View style={styles.productButton}>
     <Button onPress={buttonHandler} title="Eat"/>
     </View>
-    <Icon style={styles.productTrash} name="delete" size={25} color='black'/>
+    <Icon onPress={deleteHandler} style={styles.productTrash} name="delete" size={25} color='black'/>
     </View>
     );
 }

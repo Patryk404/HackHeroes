@@ -38,7 +38,7 @@ module.exports.getFood = async(req,res,next)=>{
 };
 
 module.exports.deleteFood = async(req,res,next)=>{
-    const productId = req.body.id;
+    const productId = req.get('id');
     try {
     await Product.deleteOne({_id: productId});
     res.status(201).json({
