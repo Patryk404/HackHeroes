@@ -12,8 +12,8 @@ class CaloriesMain extends React.Component {
         return(
             <Stack.Navigator>
                 <Stack.Screen name="Calories" component={Calories} options={{headerShown: false}}/>
-                <Stack.Screen name="Products" component={ProductList} options={{headerStyle: {backgroundColor: '#2587DD'}}}/>
-                <Stack.Screen name="AddProduct" component={AddProduct} options={{headerStyle: {backgroundColor: '#2587DD'},title: 'Add Product'}}/>
+                <Stack.Screen name="Products" component={ProductList} options={{headerStyle: {backgroundColor: '#2587DD'},headerTitleStyle: {color: 'white'},headerTintColor: 'white'}}/>
+                <Stack.Screen name="AddProduct" component={AddProduct} options={{headerStyle: {backgroundColor: '#2587DD'},headerTitleStyle: {color: 'white'},headerTintColor: 'white',title: 'Add Product'}}/>
             </Stack.Navigator>
         )
     }

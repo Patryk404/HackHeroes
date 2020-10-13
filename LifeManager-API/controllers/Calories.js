@@ -66,3 +66,13 @@ module.exports.eatFood = async(req,res,next)=>{
     }
 
 };
+
+module.exports.newIntake = async(req,res,next)=>{
+    const intake = req.body.intake;
+    const account = await Account.findOne({_id: req.userId});
+    account.calories_range = intake;
+    await account.save();
+    res.status(200).json({
+        message: 'Succesfully patch caloriesIntake'
+    })
+};

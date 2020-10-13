@@ -9,6 +9,8 @@ Router.get('/food',isAuth,CaloriesController.getFood);
 
 Router.delete('/food',isAuth,CaloriesController.deleteFood);
 
+Router.patch('/intake',isAuth,CaloriesController.newIntake)
+
 Router.post('/food',isAuth,CaloriesController.createFood);
 
 Router.post('/eatfood',isAuth,CaloriesController.eatFood);

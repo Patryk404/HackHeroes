@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text,StyleSheet,View} from 'react-native'; 
-import {Button} from 'react-native-elements';
+import {Button,Input} from 'react-native-elements';
 import PercentageCircle from 'react-native-percentage-circle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -12,9 +12,10 @@ import {connect} from 'react-redux';
 class Calories extends React.Component {
     state={
         fill: false,
-        calories: 0,
+        caloriesIntake: 0,
         caloriesGet: 0,
-        products: []
+        products: [],
+        amountInput: ''
     }
 
     componentDidMount(){
@@ -27,7 +28,7 @@ class Calories extends React.Component {
             "Content-Type": "application/json"
         }})
         .then(response=>{
-            this.setState({caloriesGet: response.data.calories,calories: response.data.calories_range});
+            this.setState({caloriesGet: response.data.calories,caloriesIntake: response.data.calories_range,amountInput: response.data.calories_range.toString()});
         })
         .catch(err=>{
             console.log(err);
@@ -38,17 +39,55 @@ class Calories extends React.Component {
         this.props.navigation.navigate('Products');
     };
 
+    inputAmountHandler= (input)=>{
+        let newText = '';
+        let numbers = '0123456789';
+        for (var i=0; i < input.length; i++) {
+            if(numbers.indexOf(input[i]) > -1 ) {
+                newText = newText + input[i];
+            }
+            else {
+                alert("please enter numbers only");
+            }
+        }
+        this.setState({amountInput: input});
+    };
+
+    setNewCalorieIntake=()=>{
+        axios.patch(URL+'/calories/intake',{
+            intake: parseInt(this.state.amountInput)
+        },{
+            headers:{
+                "Authorization": "Bearer "+this.props.token,
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response=>{
+            this.update();
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    };
+
     render(){
         return(
             <View style={styles.container}>
-                <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{alignSelf: 'center'}}/>
+                <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
                 <View style={{marginTop: 30}}>
-                    <PercentageCircle radius={100} percent={this.state.caloriesGet/this.state.calories * 100} color={"#3498db"}>   
-                        <Text style={{fontSize: 20}}>          
-                        {this.state.caloriesGet}/{this.state.calories}kcal
-                        {this.state.fill ? <Text>😃</Text>:<Text>😕</Text>}
+                    <PercentageCircle radius={100} percent={this.state.caloriesIntake >= this.state.caloriesGet ? this.state.caloriesGet/this.state.caloriesIntake * 100 : 100} color={this.state.caloriesIntake>= this.state.caloriesGet?"red" : "green"}>   
+                        <Text style={{fontSize: 20,color: this.state.caloriesIntake>= this.state.caloriesGet?"red" : "green"}}>          
+                        {this.state.caloriesGet}/{this.state.caloriesIntake}kcal
                         </Text>   
+                        <Text style={{marginTop: 10}}>
+                        {this.state.caloriesIntake>= this.state.caloriesGet? <Text style={styles.emoji}>😕</Text> : <Text style={styles.emoji}>😃</Text>}
+                        </Text>
                     </PercentageCircle>
+                </View>
+                <Text style={{fontSize: 20,textAlign: 'center',marginTop: 30}}>Calorie intake:</Text>
+                <View style={styles.containerAmount}>
+                    <Input maxLength={5} value={this.state.amountInput} onChangeText={(input)=>this.inputAmountHandler(input)}/>
+                    <Icon name="check-circle" size={30} color={"#4C8BF5"} onPress={this.setNewCalorieIntake}/>
                 </View>
                 <View style={styles.button}>
                     <Button onPress={this.buttonProductsHandler} title="Products"/>
@@ -72,20 +111,20 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 30
     },
-    calories_red: {
-        fontSize: 40,
-        marginTop: 100,
-        color: 'red'
-    },
-    calories_green:{
-        fontSize: 40,
-        marginTop: 100,
-        color: 'green'
+    emoji: {
+        fontSize: 30,
+        textAlign: 'center'
     },
     container: {
         flex: 1,
         alignItems: 'center',
     },
+    containerAmount: {
+        width: 100,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    }
 });
 
 export default connect(mapStateToProps)(Calories);
