@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text,StyleSheet,View} from 'react-native'; 
+import {Text,StyleSheet,View, TouchableNativeFeedbackBase} from 'react-native'; 
 import {Button,Input} from 'react-native-elements';
 import PercentageCircle from 'react-native-percentage-circle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,6 +8,7 @@ import axios from 'axios';
 import {URL} from '../../../public/url';
 
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class Calories extends React.Component {
     state={
@@ -20,6 +21,13 @@ class Calories extends React.Component {
 
     componentDidMount(){
         this.update();
+    }
+    
+    componentDidUpdate(){
+        if(this.props.update){
+            this.update();
+            this.props.offUpdate();
+        }
     }
 
     update=()=>{
@@ -75,12 +83,12 @@ class Calories extends React.Component {
             <View style={styles.container}>
                 <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
                 <View style={{marginTop: 30}}>
-                    <PercentageCircle radius={100} percent={this.state.caloriesIntake >= this.state.caloriesGet ? this.state.caloriesGet/this.state.caloriesIntake * 100 : 100} color={this.state.caloriesIntake>= this.state.caloriesGet?"red" : "green"}>   
-                        <Text style={{fontSize: 20,color: this.state.caloriesIntake>= this.state.caloriesGet?"red" : "green"}}>          
+                    <PercentageCircle radius={100} percent={this.state.caloriesIntake-1 >= this.state.caloriesGet ? this.state.caloriesGet/this.state.caloriesIntake * 100 : 100} color={this.state.caloriesIntake-1>= this.state.caloriesGet?"red" : "green"}>   
+                        <Text style={{fontSize: 20,color: this.state.caloriesIntake-1 >= this.state.caloriesGet?"red" : "green"}}>          
                         {this.state.caloriesGet}/{this.state.caloriesIntake}kcal
                         </Text>   
                         <Text style={{marginTop: 10}}>
-                        {this.state.caloriesIntake>= this.state.caloriesGet? <Text style={styles.emoji}>😕</Text> : <Text style={styles.emoji}>😃</Text>}
+                        {this.state.caloriesIntake-1>= this.state.caloriesGet? <Text style={styles.emoji}>😕</Text> : <Text style={styles.emoji}>😃</Text>}
                         </Text>
                     </PercentageCircle>
                 </View>
@@ -103,9 +111,16 @@ class Calories extends React.Component {
 const mapStateToProps = state => {
     return {
         logged: state.logged,
-        token: state.token
+        token: state.token,
+        update: state.update
     }
 };
+
+const mapDispatchToProps = dispatch =>{
+    return {
+        offUpdate: ()=>dispatch(actions.offUpdateComponent())
+    };
+}
 
 const styles = StyleSheet.create({
     button: {
@@ -127,4 +142,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps)(Calories);
+export default connect(mapStateToProps,mapDispatchToProps)(Calories);

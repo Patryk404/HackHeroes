@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const INITIAL_STATE = { 
     logged: false,
-    token: null
+    token: null,
+    update: false
 };
 
 const authReducer = (state= INITIAL_STATE,action)=>{
@@ -16,9 +17,22 @@ const authReducer = (state= INITIAL_STATE,action)=>{
         }
         case actionTypes.LOG_OUT:{
             return {
+                ...state,
                 logged: false,
                 token: null
             };
+        }
+        case actionTypes.UPDATE_COMPONENT_ABLE:{
+            return {
+                ...state,
+                update: true
+            }; 
+        }
+        case actionTypes.UPDATE_COMPONENT_DISABLE:{
+            return {
+                ...state,
+                update: false
+            }
         }
         default: {
             return state

@@ -7,6 +7,7 @@ import axios from 'axios';
 import {URL} from '../../../public/url';
 
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 const Product = (props)=>{
     const buttonHandler = ()=>{
@@ -19,6 +20,7 @@ const Product = (props)=>{
             }
         })
         .then(response=>{
+            props.onUpdate();
             props.navigation.goBack();
         })
         .catch(err=>{
@@ -34,7 +36,7 @@ const Product = (props)=>{
             }   
         })
         .then(response=>{
-            props.navigation.goBack();
+            props.onUpdate();
         })
         .catch(err=>{
             console.log(err);
@@ -87,4 +89,10 @@ const mapStateToProps=state=>{
     }
 };
 
-export default connect(mapStateToProps)(Product);
+const mapDispatchToProps = dispatch =>{
+    return {
+        onUpdate: ()=>dispatch(actions.onUpdateComponent())
+    };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Product);

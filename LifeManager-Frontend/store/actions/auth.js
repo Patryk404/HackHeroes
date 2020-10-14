@@ -12,3 +12,15 @@ export const logOut = () =>{
         type: actionTypes.LOG_OUT
     }
 };
+
+export const onUpdateComponent = ()=>{
+    return {
+        type: actionTypes.UPDATE_COMPONENT_ABLE
+    }
+};
+
+export const offUpdateComponent = () =>{
+    return {
+        type: actionTypes.UPDATE_COMPONENT_DISABLE
+    }
+};

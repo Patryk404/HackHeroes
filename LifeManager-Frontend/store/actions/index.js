@@ -1,4 +1,6 @@
 export {   
     loggedInto,
-    logOut
+    logOut,
+    onUpdateComponent,
+    offUpdateComponent
 } from './auth';

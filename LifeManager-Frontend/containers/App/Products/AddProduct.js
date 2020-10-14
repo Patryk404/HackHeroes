@@ -6,6 +6,7 @@ import axios from 'axios';
 import {URL} from '../../../public/url';
 
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 class AddProduct extends React.Component{
     state = {
@@ -42,6 +43,7 @@ class AddProduct extends React.Component{
             }
         })
         .then(response=>{ 
+            this.props.onUpdate();
             this.props.navigation.goBack();
         })
         .catch(err=>{
@@ -69,10 +71,16 @@ const styles = StyleSheet.create({
     }
 });
 
+const mapDispatchToProps = dispatch => {
+    return {
+        onUpdate: ()=>dispatch(actions.onUpdateComponent())
+    }
+};  
+
 const mapStateToProps = state=>{
     return {
         token: state.token
     }
 };
 
-export default connect(mapStateToProps)(AddProduct);
+export default connect(mapStateToProps,mapDispatchToProps)(AddProduct);

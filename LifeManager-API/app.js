@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const AuthRoute = require('./routes/Auth');
 const CaloriesRoute = require('./routes/Calories');
+const WaterRoute = require('./routes/Water');
 
 app.use(bodyParser.json());
 
@@ -21,6 +22,7 @@ app.use('/calories',CaloriesRoute);
 
 app.use('/auth',AuthRoute);
 
+app.use('/water',WaterRoute);
 
 app.use((error,req,res,next)=>{//error handling
   console.log(error);

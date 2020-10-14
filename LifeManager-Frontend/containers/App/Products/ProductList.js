@@ -4,6 +4,7 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/index';
 
 import axios from 'axios';
 import {URL} from '../../../public/url'; 
@@ -16,6 +17,13 @@ class ProductList extends React.Component {
     }
     componentDidMount() {
         this.update();
+    }
+
+    componentDidUpdate() {
+        if(this.props.update){
+            this.update();
+            this.props.offUpdate();
+        }
     }
 
     update=()=>{
@@ -72,10 +80,17 @@ const styles = StyleSheet.create({
     }
 });
 
+const mapDispatchToProps = dispatch=>{
+    return {
+        offUpdate: ()=>dispatch(actions.offUpdateComponent())
+    }
+};  
+
 const mapStateToProps = state =>{
     return {
-        token: state.token
+        token: state.token,
+        update: state.update
     }
 };
 
-export default connect(mapStateToProps)(ProductList);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductList);
