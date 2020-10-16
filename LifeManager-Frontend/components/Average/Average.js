@@ -6,7 +6,7 @@ const Average = (props)=> {
     return(
         <View>
             <Text style={styles.text}>Average:</Text>
-            <Text style={styles.text}>0</Text>
+            <Text style={styles.text}>{props.average ? props.average : 0}</Text>
         </View> 
     );
 };

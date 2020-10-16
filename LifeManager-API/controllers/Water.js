@@ -44,9 +44,14 @@ module.exports.minusCup = async(req,res,next)=>{
 
 module.exports.getAverage = async(req,res,next)=>{
     let realCups = await HistoryCups.find({person: req.userId}).sort({date: 'desc'});
+    if (!realCups){
+        return res.status(404).json({
+            average: 0
+        });
+    }
     const cups = await HistoryCups.find({person: req.userId}).sort({date: 'desc'}).limit(7);
     const filteredCups = realCups.filter((cup,index)=> index < cups.length ? cup.date !== cups[index].date : null );
-    await HistoryCups.deleteMany();
+    await HistoryCups.deleteMany({person: req.userId}); //deleting unnecessary// not working fine for multiple refreshes
     for(let i=0; i<filteredCups.length; i++){
         const temp = await new HistoryCups({
             person: filteredCups[i].person,
@@ -61,6 +66,6 @@ module.exports.getAverage = async(req,res,next)=>{
     }
     const average = sum/cups.length;
     res.status(200).json({
-        average: average
+        average: average.toFixed(2)
     });
 };
