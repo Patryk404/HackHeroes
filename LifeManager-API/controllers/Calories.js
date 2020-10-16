@@ -1,5 +1,6 @@
 const Account = require('../models/account');
 const Product = require('../models/product');
+const HistoryCalories = require('../models/historyCalories');
 
 module.exports.getCalories = async (req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
@@ -10,6 +11,13 @@ module.exports.getCalories = async (req,res,next)=>{
         calories_range: calories_range
     });
 };
+
+module.exports.getHistoryCalories = async(req,res,next)=>{
+    const historyCalories = await HistoryCalories.find({person: req.userId});
+    res.status(200).json({
+        history: historyCalories
+    });
+};  
 
 module.exports.createFood = async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});

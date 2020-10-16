@@ -1,8 +1,11 @@
 const Router = require('express').Router();
 const {isAuth} = require('../middleware/is-auth');
 const WaterController = require('../controllers/Water');
+const { ResetAll } = require('../middleware/resetAll');
 
-Router.get('/',isAuth,WaterController.getCups);
+Router.get('/',isAuth,ResetAll,WaterController.getCups);
+
+Router.get('/average',isAuth,WaterController.getAverage);
 
 Router.put('/plus',isAuth,WaterController.plusCup);
 

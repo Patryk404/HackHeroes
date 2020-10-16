@@ -1,18 +1,20 @@
 const Router = require('express').Router();
 const {isAuth} = require('../middleware/is-auth');
-const {CheckDate} = require('../middleware/check-date');
+const {ResetAll} = require('../middleware/resetAll');
 const CaloriesController = require('../controllers/Calories');
 
-Router.get('/',isAuth,CheckDate,CaloriesController.getCalories);
+Router.get('/',isAuth,ResetAll,CaloriesController.getCalories);
 
-Router.get('/food',isAuth,CaloriesController.getFood);
+Router.get('/food',isAuth,ResetAll,CaloriesController.getFood);
 
-Router.delete('/food',isAuth,CaloriesController.deleteFood);
+Router.get('/history',isAuth,ResetAll,CaloriesController.getHistoryCalories);
 
-Router.patch('/intake',isAuth,CaloriesController.newIntake)
+Router.delete('/food',isAuth,ResetAll,CaloriesController.deleteFood);
 
-Router.post('/food',isAuth,CaloriesController.createFood);
+Router.patch('/intake',isAuth,ResetAll,CaloriesController.newIntake)
 
-Router.post('/eatfood',isAuth,CaloriesController.eatFood);
+Router.post('/food',isAuth,ResetAll,CaloriesController.createFood);
+
+Router.post('/eatfood',isAuth,ResetAll,CaloriesController.eatFood);
 
 module.exports = Router;
