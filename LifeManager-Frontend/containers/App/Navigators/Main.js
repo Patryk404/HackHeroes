@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
-import Sleep from '../Tabs/Sleep';
+import Sleep from './SleepMain';
 import Calories from './CaloriesMain'
 import Water from '../Tabs/Water';
 

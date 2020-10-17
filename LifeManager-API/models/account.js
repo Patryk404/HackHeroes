@@ -16,6 +16,11 @@ const accountSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    start_sleep_date:{
+        type: Date,
+        default: new Date(0),
+        required: true
+    },
     cups_of_water: {
         type: Number,
         required: true
@@ -29,7 +34,7 @@ const accountSchema = new mongoose.Schema({
         required: true
     },
     sleep: {
-        type: Number,
+        type: Boolean,
         required: true
     }
 });

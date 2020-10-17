@@ -4,15 +4,19 @@ const historySleepSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Account'
     },
-    Sleep_hours: {
+    sleep_hours: {
         type: Number,
         required: true
     },
-    Sleep_minutes: {
+    sleep_minutes: {
         type: Number,
         required: true
     },
-    date: {
+    date_start: {
+        type: Date,
+        required: true
+    },
+    date_finished: {
         type: Date,
         required: true
     }

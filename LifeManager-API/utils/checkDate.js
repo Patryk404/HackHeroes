@@ -1,4 +1,4 @@
-module.exports.checkDate = (ActualDate , DateToCompare )=>{
+module.exports.isDateOlder = (ActualDate , DateToCompare )=>{
     const dateOne = ActualDate.toLocaleDateString().split('.');
     const dateTwo = DateToCompare.toLocaleDateString().split('.');
     let Older=false;

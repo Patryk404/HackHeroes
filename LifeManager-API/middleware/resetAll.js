@@ -1,11 +1,11 @@
 const Account = require('../models/account');
 const HistoryCalories = require('../models/historyCalories');
 const HistoryCups = require('../models/historyCupsOfWater');
-const {checkDate} = require('../utils/checkDate');
+const {isDateOlder} = require('../utils/checkDate');
 
 module.exports.ResetAll = async (req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
-    const older = checkDate(new Date(),account.date);
+    const older = isDateOlder(new Date(),account.date);
     if(older){
         await reset_calories(account);
         await reset_cups(account);

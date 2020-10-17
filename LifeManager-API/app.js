@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const AuthRoute = require('./routes/Auth');
 const CaloriesRoute = require('./routes/Calories');
 const WaterRoute = require('./routes/Water');
+const SleepRoute = require('./routes/Sleep');
 
 app.use(bodyParser.json());
 
@@ -18,11 +19,13 @@ app.use((req, res, next) => {//cors policy
     next();
   });
 
-app.use('/calories',CaloriesRoute);
-
 app.use('/auth',AuthRoute);
 
+app.use('/calories',CaloriesRoute);
+
 app.use('/water',WaterRoute);
+
+app.use('/sleep',SleepRoute); 
 
 app.use((error,req,res,next)=>{//error handling
   console.log(error);
