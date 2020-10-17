@@ -13,7 +13,7 @@ module.exports.getCalories = async (req,res,next)=>{
 };
 
 module.exports.getHistoryCalories = async(req,res,next)=>{
-    const historyCalories = await HistoryCalories.find({person: req.userId});
+    const historyCalories = await HistoryCalories.find({person: req.userId}).select({meet: 1,calories: 1,calories_range: 1,date: 1}).sort({date: 'desc'});
     res.status(200).json({
         history: historyCalories
     });

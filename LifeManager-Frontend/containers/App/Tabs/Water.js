@@ -17,7 +17,6 @@ class Water extends React.Component{
 
     componentDidMount(){
         this.update();
-        this.getAverage();
     }
     update = () =>{
         axios.get(URL+'/water',{headers: {
@@ -28,6 +27,7 @@ class Water extends React.Component{
             this.setState({
                 cups: response.data.cups
             });
+            this.getAverage();
         })
         .catch(err=>{
             console.log(err);

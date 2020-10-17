@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text,StyleSheet,View, TouchableNativeFeedbackBase} from 'react-native'; 
+import {Text,StyleSheet,View} from 'react-native'; 
 import {Button,Input} from 'react-native-elements';
 import PercentageCircle from 'react-native-percentage-circle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -46,6 +46,10 @@ class Calories extends React.Component {
     buttonProductsHandler=()=>{
         this.props.navigation.navigate('Products');
     };
+
+    buttonHistoryOfCaloriesHandler = ()=>{
+        this.props.navigation.navigate('CaloriesHistory'); 
+    }; 
 
     inputAmountHandler= (input)=>{
         let newText = '';
@@ -101,7 +105,7 @@ class Calories extends React.Component {
                     <Button onPress={this.buttonProductsHandler} title="Products"/>
                 </View>  
                 <View style={styles.button}>
-                    <Button title="History of Calories"/>
+                    <Button onPress={this.buttonHistoryOfCaloriesHandler} title="History of Calories"/>
                 </View> 
             </View>
         )

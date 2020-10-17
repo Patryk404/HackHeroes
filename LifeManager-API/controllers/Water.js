@@ -50,16 +50,16 @@ module.exports.getAverage = async(req,res,next)=>{
         });
     }
     const cups = await HistoryCups.find({person: req.userId}).sort({date: 'desc'}).limit(7);
-    const filteredCups = realCups.filter((cup,index)=> index < cups.length ? cup.date !== cups[index].date : null );
-    await HistoryCups.deleteMany({person: req.userId}); //deleting unnecessary// not working fine for multiple refreshes
-    for(let i=0; i<filteredCups.length; i++){
+    //const filteredCups = realCups.filter((cup,index)=> index < cups.length ? cup.date !== cups[index].date : null );
+    //await HistoryCups.deleteMany({person: req.userId}); //deleting unnecessary// not working fine for multiple refreshes
+    /*for(let i=0; i<filteredCups.length; i++){
         const temp = await new HistoryCups({
             person: filteredCups[i].person,
             cups: filteredCups[i].cups,
             date: filteredCups[i].date
         });
         await temp.save();
-    }
+    }*/
     let sum=0;
     for (let i=0; i<cups.length; i++){
         sum += cups[i].cups;

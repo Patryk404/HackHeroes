@@ -23,7 +23,7 @@ const reset_calories = async(account)=>{
         calories: account.calories,
         calories_range: account.calories_range,
         meet: meet,
-        date: new Date()
+        date: account.date
     });
     await calories.save();
 }
@@ -32,7 +32,7 @@ const reset_cups = async(account)=>{
     const cups = await new HistoryCups({
         person: account._id,
         cups: account.cups_of_water,
-        date: new Date()
+        date: account.date
     });
     await cups.save();
 };
