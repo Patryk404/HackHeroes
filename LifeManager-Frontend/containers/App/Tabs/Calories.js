@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text,StyleSheet,View} from 'react-native'; 
+import {Text,StyleSheet,View,ActivityIndicator} from 'react-native'; 
 import {Button,Input} from 'react-native-elements';
 import PercentageCircle from 'react-native-percentage-circle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -16,7 +16,8 @@ class Calories extends React.Component {
         caloriesIntake: 0,
         caloriesGet: 0,
         products: [],
-        amountInput: ''
+        amountInput: '',
+        loading: false
     }
 
     componentDidMount(){
@@ -31,12 +32,13 @@ class Calories extends React.Component {
     }
 
     update=()=>{
+        this.setState({loading: true});
         axios.get(URL+'/calories',{headers: {
             "Authorization": "Bearer "+this.props.token,
             "Content-Type": "application/json"
         }})
         .then(response=>{
-            this.setState({caloriesGet: response.data.calories,caloriesIntake: response.data.calories_range,amountInput: response.data.calories_range.toString()});
+            this.setState({caloriesGet: response.data.calories,caloriesIntake: response.data.calories_range,amountInput: response.data.calories_range.toString(),loading: false});
         })
         .catch(err=>{
             console.log(err);
@@ -71,6 +73,7 @@ class Calories extends React.Component {
     };
 
     setNewCalorieIntake=()=>{
+        this.setState({loading: true});
         axios.patch(URL+'/calories/intake',{
             intake: parseInt(this.state.amountInput)
         },{
@@ -90,6 +93,7 @@ class Calories extends React.Component {
     render(){
         return(
             <View style={styles.container}>
+                
                 <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
                 <View style={{position:'absolute',left: 30,top: 30}}>
                     <Button onPress={this.buttonLogOutHandler} title="Log Out"/>
@@ -109,6 +113,7 @@ class Calories extends React.Component {
                     <Input maxLength={5} value={this.state.amountInput} onChangeText={(input)=>this.inputAmountHandler(input)}/>
                     <Icon name="check-circle" size={30} color={"#4C8BF5"} onPress={this.setNewCalorieIntake}/>
                 </View>
+                {this.state.loading ? <ActivityIndicator size="large" color="#0000ff"/> : null }
                 <View style={styles.button}>
                     <Button onPress={this.buttonProductsHandler} title="Products"/>
                 </View>  
@@ -137,7 +142,8 @@ const mapDispatchToProps = dispatch =>{
 
 const styles = StyleSheet.create({
     button: {
-        marginTop: 30
+        marginTop: 30,
+        width: '50%'
     },
     emoji: {
         fontSize: 30,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View,SafeAreaView,ScrollView,Text,Image,StyleSheet} from 'react-native';
+import {View,SafeAreaView,ScrollView,Text,ActivityIndicator,Image,StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import axios from 'axios';
@@ -26,13 +26,15 @@ class Covid extends React.Component{
             todayDeaths: 0,
             recovered: 0,
             todayRecovered: 0
-        }
+        },
+        loading: false
     };
 
     componentDidMount(){
         this.update();
     }
     update =()=>{
+        this.setState({loading: true});
         axios.get("https://disease.sh/v3/covid-19/countries/Poland")
         .then(({data})=>{
             this.setState({
@@ -45,7 +47,8 @@ class Covid extends React.Component{
                 todayDeaths: data.todayDeaths,
                 recovered: data.recovered,
                 todayRecovered: data.todayRecovered
-                }
+                },
+                loading: false
             });
             return axios.get("https://disease.sh/v3/covid-19/all");
         })
@@ -59,7 +62,8 @@ class Covid extends React.Component{
                     todayDeaths: data.todayDeaths,
                     recovered: data.recovered,
                     todayRecovered: data.todayRecovered
-                }
+                },
+                loading: false
             });
         })
         .catch(err=>{
@@ -70,6 +74,7 @@ class Covid extends React.Component{
         return(
             <SafeAreaView style={styles.container}>
                 <ScrollView>
+                    {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
                     <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
                     <Text style={styles.textTitle}>Covid-19 Tracker</Text>
                     <Image style={styles.flag} source={{uri: this.state.country.flagImageLink ? this.state.country.flagImageLink : null}}/>
@@ -111,6 +116,11 @@ const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
         width: '100%'
+    },
+    spinner: {
+        position: 'absolute',
+        top: 5,
+        left: 5
     },
     textTitle: {
         fontSize: 30,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView,ScrollView,View,StyleSheet} from 'react-native';
+import {SafeAreaView,ScrollView,ActivityIndicator,View,StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -13,7 +13,8 @@ import Product from './Product';
 
 class ProductList extends React.Component {
     state = {
-        products: []
+        products: [],
+        loading: false
     }
     componentDidMount() {
         this.update();
@@ -27,6 +28,7 @@ class ProductList extends React.Component {
     }
 
     update=()=>{
+        this.setState({loading: true});
         axios.get(URL+'/calories/food',{
             headers:{
                 "Authorization": "Bearer "+ this.props.token,
@@ -35,7 +37,8 @@ class ProductList extends React.Component {
         })
         .then(response=>{
             this.setState({
-                products: response.data.food
+                products: response.data.food,
+                loading: false
             })
         })
         .catch(err=>{
@@ -51,15 +54,16 @@ class ProductList extends React.Component {
         return(
                 <SafeAreaView style={styles.container}>
                 <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{alignSelf: 'center'}}/>
+                <View style={styles.button}>
+                    <Button onPress={this.addProductButtonHandler} title="Add Product"/>
+                </View>
                 <ScrollView>
                     {this.state.products.map(product=>{
                         return(
                             <Product navigation={this.props.navigation} key={product._id} _id={product._id} title={product.title} calories={product.calories}/>
                         );
                     })}
-                <View style={styles.button}>
-                    <Button onPress={this.addProductButtonHandler} title="Add Product"/>
-                </View>
+                    {this.state.loading ? <ActivityIndicator style={{marginTop: '40%'}} size="large" color="#0000ff"/> : null }
                 </ScrollView>
                 </SafeAreaView>
         );

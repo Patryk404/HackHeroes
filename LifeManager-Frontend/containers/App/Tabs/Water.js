@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View,Image,StyleSheet,Text,Linking} from 'react-native';
+import {View,Image,StyleSheet,ActivityIndicator,Text,Linking} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Average from '../../../components/Average/Average';
 
@@ -12,13 +12,15 @@ import {connect} from 'react-redux';
 class Water extends React.Component{
     state = {
         cups: 0,
-        average: 0
+        average: 0,
+        loading: false
     }
 
     componentDidMount(){
         this.update();
     }
     update = () =>{
+        this.setState({loading: true});
         axios.get(URL+'/water',{headers: {
             "Authorization": "Bearer "+this.props.token,
             "Content-Type": "application/json"
@@ -40,7 +42,7 @@ class Water extends React.Component{
             "Content-Type": "application/json"
         }})
         .then(response=>{
-            this.setState({average: response.data.average});
+            this.setState({average: response.data.average,loading:false});
         })
         .catch(err=>{
             console.log(err);
@@ -78,6 +80,7 @@ class Water extends React.Component{
         <View style={styles.container}>
             <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
             <Image style={styles.image} source={require('../../../public/images/water-glass1.png')}/>
+            {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
             <Text style={styles.textToday}>Today:</Text>
             <Text style={styles.textCups}>{this.state.cups} Cups</Text>
             <View style={{flexDirection: "row",justifyContent: 'space-around'}}>
@@ -85,7 +88,7 @@ class Water extends React.Component{
                 <Icon onPress={this.plusCupOfWater} style={styles.icon} name="plus" size={40} color="green"/>
             </View>
             <Average average={this.state.average}/>
-            <View style={{flexDirection: 'row',marginTop: 30}}>
+            <View style={{flexDirection: 'row',position: 'absolute', bottom: 10}}>
                 <Text>Icons made by </Text> 
                 <Text onPress={()=> Linking.openURL("https://www.flaticon.com/authors/pixel-perfect")} style={{textDecorationLine: 'underline',color: 'blue'}} title="Pixel perfect">Pixel perfect</Text> 
                 <Text> from </Text> 
@@ -103,6 +106,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: '#fff'
+    },
+    spinner:{
+        position: 'absolute',
+        top: 5,
+        left: 5
     },
     image: {
         marginTop: 30,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView,View,Text,ScrollView,StyleSheet} from 'react-native';
+import {SafeAreaView,View,Text,ActivityIndicator,ScrollView,StyleSheet} from 'react-native';
 
 import axios from 'axios';
 import {URL} from '../../../public/url';
@@ -8,10 +8,12 @@ import {connect} from 'react-redux';
 
 class CaloriesHistory extends React.Component {
     state={
-        history: []
+        history: [],
+        loading: false
     }
 
     componentDidMount(){
+        this.setState({loading: true});
         axios.get(URL+'/calories/history',{
             headers: {
                 "Authorization": "Bearer "+this.props.token,
@@ -20,7 +22,8 @@ class CaloriesHistory extends React.Component {
         })
         .then(response=>{
             this.setState({
-                history: response.data.history
+                history: response.data.history,
+                loading: false
             });
         })
         .catch(err=>{
@@ -41,6 +44,7 @@ class CaloriesHistory extends React.Component {
                         );
                     })
                 }
+                {this.state.loading ? <ActivityIndicator style={{marginTop: '60%'}} size="large" color="#0000ff"/> : null }
                 </ScrollView>
             </SafeAreaView>
         )

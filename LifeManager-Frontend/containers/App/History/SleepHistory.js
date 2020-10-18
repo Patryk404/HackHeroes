@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,SafeAreaView,ScrollView,Text,StyleSheet} from 'react-native';
+import {View,SafeAreaView,ScrollView,ActivityIndicator,Text,StyleSheet} from 'react-native';
 
 import axios from 'axios';
 import {URL} from '../../../public/url';
@@ -8,10 +8,12 @@ import {connect} from 'react-redux';
 
 class SleepHistory extends React.Component{
     state={
-        history: []
+        history: [],
+        loading: false
     };
 
     componentDidMount(){
+        this.setState({loading: true});
         axios.get(URL+'/sleep/history',{
             headers: {
                 "Authorization": "Bearer "+this.props.token,
@@ -20,7 +22,8 @@ class SleepHistory extends React.Component{
         })
         .then(response=>{
             this.setState({
-                history: response.data.history
+                history: response.data.history,
+                loading: false
             });
         })
         .catch(err=>{
@@ -32,6 +35,7 @@ class SleepHistory extends React.Component{
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView>
+                {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
                     {
                         this.state.history.map(tile=>{
                             return(
@@ -59,6 +63,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         alignSelf: 'center'
+    },
+    spinner: {
+        position: 'absolute',
+        top: 20
     },
     containerHistory:{
         margin: 20,

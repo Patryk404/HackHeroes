@@ -6,7 +6,7 @@ const Average = (props)=> {
     if (props.sleep)
     {
         return(
-            <View style={{marginTop: 20}}>
+            <View style={{marginTop: '10%'}}>
                 <Text style={styles.text}>Average:</Text>
                 <Text style={styles.text}>{props.averageHours ? props.averageHours: 0} hours {props.averageMinutes ? props.averageMinutes : 0} minutes</Text>
             </View> 
@@ -14,7 +14,7 @@ const Average = (props)=> {
     }
     else{
         return(
-            <View>
+            <View style={{marginTop:'2%'}}>
                 <Text style={styles.text}>Average:</Text>
                 <Text style={styles.text}>{isNaN(props.average) ? 0 : parseInt(props.average)}</Text>
             </View> 
