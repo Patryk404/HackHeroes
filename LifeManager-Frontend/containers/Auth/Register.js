@@ -48,7 +48,7 @@ class Register extends React.Component {
     render(){
         return(
             <View style={styles.container}>
-                <Text style={styles.text}>Make account😀</Text>
+                <Text style={styles.text}>Make an account😀</Text>
                 <Input placeholder="Email" style={styles.input} value={this.state.email} onChangeText={value=>this.handleInputChange('email',value)}/>
                 <Input placeholder='Username' style={styles.input} value={this.state.username} onChangeText={value=>this.handleInputChange('username',value)}/>
                 <Input placeholder='Password' style={styles.input} secureTextEntry={true} value={this.state.password} onChangeText={value=>this.handleInputChange('password',value)}/>

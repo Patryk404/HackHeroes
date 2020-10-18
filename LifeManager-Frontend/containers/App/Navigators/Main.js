@@ -8,6 +8,7 @@ const Tab = createBottomTabNavigator();
 import Sleep from './SleepMain';
 import Calories from './CaloriesMain'
 import Water from '../Tabs/Water';
+import Covid from '../Tabs/Covid';
 
 class Main extends React.Component {
     render(){
@@ -26,6 +27,11 @@ class Main extends React.Component {
                 <Tab.Screen name="Water" component={Water} options={{
                     tabBarIcon: (()=>(
                         <Icon name="opacity" size={25} color='black'/>
+                    ))
+                }}/>
+                <Tab.Screen name="Covid-19" component={Covid} options={{
+                    tabBarIcon: (()=>(
+                        <Icon name="bacteria" size={25} color='black'/>
                     ))
                 }}/>
             </Tab.Navigator>

@@ -43,6 +43,11 @@ class Calories extends React.Component {
         })
     }
 
+    buttonLogOutHandler=()=>{
+        this.props.logOut();
+        this.props.navigation.navigate('Login');
+    };  
+
     buttonProductsHandler=()=>{
         this.props.navigation.navigate('Products');
     };
@@ -86,6 +91,9 @@ class Calories extends React.Component {
         return(
             <View style={styles.container}>
                 <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
+                <View style={{position:'absolute',left: 30,top: 30}}>
+                    <Button onPress={this.buttonLogOutHandler} title="Log Out"/>
+                </View>
                 <View style={{marginTop: 30}}>
                     <PercentageCircle radius={100} percent={this.state.caloriesIntake-1 >= this.state.caloriesGet ? this.state.caloriesGet/this.state.caloriesIntake * 100 : 100} color={this.state.caloriesIntake-1>= this.state.caloriesGet?"red" : "green"}>   
                         <Text style={{fontSize: 20,color: this.state.caloriesIntake-1 >= this.state.caloriesGet?"red" : "green"}}>          
@@ -122,7 +130,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>{
     return {
-        offUpdate: ()=>dispatch(actions.offUpdateComponent())
+        offUpdate: ()=>dispatch(actions.offUpdateComponent()),
+        logOut: ()=>dispatch(actions.logOut())
     };
 }
 
