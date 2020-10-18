@@ -1,6 +1,7 @@
 const HistorySleep = require('../models/historySleep');
 const Account = require('../models/account');
 const {msToTime} = require('../utils/milisecondsToTime');
+const {addHours} = require('../utils/addHours'); 
 
 module.exports.getSleep = async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
@@ -9,9 +10,16 @@ module.exports.getSleep = async(req,res,next)=>{
     });
 };
 
+module.exports.getHistory = async(req,res,next)=>{
+    const historySleep = await HistorySleep.find({person: req.userId}).select({sleep_hours: 1,sleep_minutes: 1,date_start: 1,date_finished: 1}).sort({date_finished: 'desc'});
+    res.status(200).json({
+        history: historySleep
+    });
+};  
+
 module.exports.startSleep= async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
-    account.start_sleep_date = new Date();
+    account.start_sleep_date = addHours(new Date(),2); //because it's Poland time
     account.sleep = true;
     await account.save();
     res.status(201).json({
@@ -22,7 +30,7 @@ module.exports.startSleep= async(req,res,next)=>{
 module.exports.stopSleep=async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
     const start_sleep = account.start_sleep_date;
-    const now = new Date();
+    const now = addHours(new Date(),2);
 
     if(account.sleep)
     {
@@ -69,7 +77,7 @@ module.exports.getAverage = async(req,res,next)=>{
     const hoursAverage = hoursSum/historySleeps.length;
     const minutesAverage = minutesSum/historySleeps.length;
     res.status(200).json({
-        hours: hoursAverage,
+        hours: parseInt(hoursAverage.toFixed(0)),
         minutes: parseInt(minutesAverage.toFixed(0))
     });
 };

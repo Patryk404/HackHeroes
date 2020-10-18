@@ -4,6 +4,8 @@ const SleepController = require('../controllers/Sleep');
 
 Router.get('/',isAuth,SleepController.getSleep);
 
+Router.get('/history',isAuth,SleepController.getHistory);
+
 Router.get('/average',isAuth,SleepController.getAverage);
 
 Router.put('/gotosleep',isAuth,SleepController.startSleep);

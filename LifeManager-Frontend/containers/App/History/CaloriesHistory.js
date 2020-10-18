@@ -32,11 +32,11 @@ class CaloriesHistory extends React.Component {
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                 {
-                    this.state.history.map(calories=>{
+                    this.state.history.map(tile=>{
                         return(
-                        <View style={styles.containerHistory} key={calories._id}>
-                            <Text style={{...styles.textTile,fontWeight: 'bold'}}>{calories.date.split('T')[0].replace('-','.').replace('-','.')}</Text>
-                            <Text style={styles.textTile}>{calories.calories}/{calories.calories_range}kcal {calories.meet ? <Text>😀</Text> : <Text>😔</Text>}</Text>
+                        <View style={styles.containerHistory} key={tile._id}>
+                            <Text style={{...styles.textTile,fontWeight: 'bold'}}>{tile.date.split('T')[0].replace('-','.').replace('-','.')}</Text>
+                            <Text style={styles.textTile}>{tile.calories}/{tile.calories_range}kcal {tile.meet ? <Text>😀</Text> : <Text>😔</Text>}</Text>
                         </View>
                         );
                     })

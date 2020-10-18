@@ -2,6 +2,7 @@ const Account = require('../models/account');
 const HistoryCalories = require('../models/historyCalories');
 const HistoryCups = require('../models/historyCupsOfWater');
 const {isDateOlder} = require('../utils/checkDate');
+const {addHours} = require('../utils/addHours');
 
 module.exports.ResetAll = async (req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
@@ -37,13 +38,9 @@ const reset_cups = async(account)=>{
     await cups.save();
 };
 
-const reset_sleep = async(account)=>{
-    //TO DO
-};
-
 const reset_account = async(account)=>{
     account.calories = 0;
     account.cups_of_water = 0;
-    account.date = new Date();
+    account.date = addHours(new Date(),2);
     await account.save();
 }
