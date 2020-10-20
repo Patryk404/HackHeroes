@@ -1,8 +1,9 @@
 import React from 'react';
 import {Text,StyleSheet,View,ActivityIndicator} from 'react-native'; 
-import {Button,Input} from 'react-native-elements';
+import {Button,Input, ThemeConsumer} from 'react-native-elements';
 import PercentageCircle from 'react-native-percentage-circle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Average from '../../../components/Average/Average';
 
 import axios from 'axios';
 import {URL} from '../../../public/url';
@@ -15,6 +16,7 @@ class Calories extends React.Component {
         fill: false,
         caloriesIntake: 0,
         caloriesGet: 0,
+        average: 0,
         products: [],
         amountInput: '',
         loading: false
@@ -22,6 +24,7 @@ class Calories extends React.Component {
 
     componentDidMount(){
         this.update();
+        this.getAverage();
     }
     
     componentDidUpdate(){
@@ -44,6 +47,19 @@ class Calories extends React.Component {
             console.log(err);
         })
     }
+
+    getAverage=()=>{
+        axios.get(URL+'/calories/average',{headers: {
+            "Authorization": "Bearer "+this.props.token,
+            "Content-Type": "application/json"
+        }})
+        .then(response=>{
+            this.setState({average: response.data.average});
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    };
 
     buttonLogOutHandler=()=>{
         this.props.logOut();
@@ -120,6 +136,7 @@ class Calories extends React.Component {
                 <View style={styles.button}>
                     <Button onPress={this.buttonHistoryOfCaloriesHandler} title="Calorie History"/>
                 </View> 
+                <Average calories average={this.state.average}/>
             </View>
         )
     }
@@ -142,7 +159,7 @@ const mapDispatchToProps = dispatch =>{
 
 const styles = StyleSheet.create({
     button: {
-        marginTop: 30,
+        marginTop: 10,
         width: '50%'
     },
     emoji: {

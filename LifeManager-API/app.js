@@ -6,6 +6,9 @@ const AuthRoute = require('./routes/Auth');
 const CaloriesRoute = require('./routes/Calories');
 const WaterRoute = require('./routes/Water');
 const SleepRoute = require('./routes/Sleep');
+const helmet = require("helmet");
+
+app.use(helmet());
 
 app.use(bodyParser.json());
 

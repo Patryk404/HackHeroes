@@ -5,16 +5,18 @@ const CaloriesController = require('../controllers/Calories');
 
 Router.get('/',isAuth,ResetAll,CaloriesController.getCalories);
 
-Router.get('/food',isAuth,ResetAll,CaloriesController.getFood);
+Router.get('/average',isAuth,CaloriesController.getCaloriesAverage);
 
-Router.get('/history',isAuth,ResetAll,CaloriesController.getHistoryCalories);
+Router.get('/food',isAuth,CaloriesController.getFood);
 
-Router.delete('/food',isAuth,ResetAll,CaloriesController.deleteFood);
+Router.get('/history',isAuth,CaloriesController.getHistoryCalories);
 
-Router.patch('/intake',isAuth,ResetAll,CaloriesController.newIntake)
+Router.delete('/food',isAuth,CaloriesController.deleteFood);
 
-Router.post('/food',isAuth,ResetAll,CaloriesController.createFood);
+Router.patch('/intake',isAuth,CaloriesController.newIntake)
 
-Router.post('/eatfood',isAuth,ResetAll,CaloriesController.eatFood);
+Router.post('/food',isAuth,CaloriesController.createFood);
+
+Router.post('/eatfood',isAuth,CaloriesController.eatFood);
 
 module.exports = Router;

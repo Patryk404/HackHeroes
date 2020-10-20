@@ -12,6 +12,18 @@ module.exports.getCalories = async (req,res,next)=>{
     });
 };
 
+module.exports.getCaloriesAverage = async(req,res,next)=>{
+    const historyCalories = await HistoryCalories.find({person: req.userId}).select({calories:1}).sort({date: 'desc'}).limit(7);
+    let caloriesSum = 0;
+    historyCalories.map(calorie=>{
+        caloriesSum+=calorie.calories;
+    });
+    const calorieAverage = caloriesSum/historyCalories.length;
+    res.status(200).json({
+        average: parseInt(calorieAverage.toFixed(0))
+    });
+};
+
 module.exports.getHistoryCalories = async(req,res,next)=>{
     const historyCalories = await HistoryCalories.find({person: req.userId}).select({meet: 1,calories: 1,calories_range: 1,date: 1}).sort({date: 'desc'});
     res.status(200).json({
