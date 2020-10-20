@@ -41,7 +41,7 @@ class SleepHistory extends React.Component{
                             return(
                                 <View style={styles.containerHistory} key={tile._id}>
                                     <Text style={styles.textTileTitle}>{tile.date_start.split('T')[0].replace('-','.').replace('-','.')}{tile.date_start.split('T')[0].replace('-','.').replace('-','.') === tile.date_finished.split('T')[0].replace('-','.').replace('-','.') ? null : <Text>-{tile.date_finished.split('T')[0].replace('-','.').replace('-','.')}</Text>}</Text>
-                            <Text style={{...styles.textTileTitle, fontWeight: '100',marginTop: 10}}>{tile.sleep_hours} hours {tile.sleep_minutes} minutes</Text>
+                            <Text style={{...styles.textTileTitle, fontWeight: '100',marginTop: 10}}>{tile.sleep_hours} hours {tile.sleep_minutes} minutes💤</Text>
                                 </View>
                             );
                         })

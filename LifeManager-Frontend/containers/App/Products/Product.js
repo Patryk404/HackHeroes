@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     productTrash:{
         position: 'absolute',
-        right: 30,
+        right: 15,
         color: '#4C8BF5'
     },
 }); 

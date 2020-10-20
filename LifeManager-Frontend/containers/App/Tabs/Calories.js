@@ -118,7 +118,7 @@ class Calories extends React.Component {
                     <Button onPress={this.buttonProductsHandler} title="Products"/>
                 </View>  
                 <View style={styles.button}>
-                    <Button onPress={this.buttonHistoryOfCaloriesHandler} title="History of Calories"/>
+                    <Button onPress={this.buttonHistoryOfCaloriesHandler} title="Calorie History"/>
                 </View> 
             </View>
         )

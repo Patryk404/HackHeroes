@@ -7,7 +7,7 @@ const Tab = createBottomTabNavigator();
 
 import Sleep from './SleepMain';
 import Calories from './CaloriesMain'
-import Water from '../Tabs/Water';
+import Water from './WaterMain';
 import Covid from '../Tabs/Covid';
 
 class Main extends React.Component {

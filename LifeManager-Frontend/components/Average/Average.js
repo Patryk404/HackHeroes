@@ -7,15 +7,15 @@ const Average = (props)=> {
     {
         return(
             <View style={{marginTop: '10%'}}>
-                <Text style={styles.text}>Average:</Text>
+                <Text style={styles.text}>Average for the last 7 sleeps:</Text>
                 <Text style={styles.text}>{props.averageHours ? props.averageHours: 0} hours {props.averageMinutes ? props.averageMinutes : 0} minutes</Text>
             </View> 
         );
     }
     else{
         return(
-            <View style={{marginTop:'2%'}}>
-                <Text style={styles.text}>Average:</Text>
+            <View>
+                <Text style={styles.text}>Average for 7 days:</Text>
                 <Text style={styles.text}>{isNaN(props.average) ? 0 : parseInt(props.average)}</Text>
             </View> 
         );

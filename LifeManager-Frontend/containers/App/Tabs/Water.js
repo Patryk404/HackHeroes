@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {View,Image,StyleSheet,ActivityIndicator,Text,Linking} from 'react-native';
+import {View,Image,SafeAreaView,ScrollView,StyleSheet,ActivityIndicator,Text,Linking} from 'react-native';
+import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Average from '../../../components/Average/Average';
 
@@ -75,26 +76,35 @@ class Water extends React.Component{
         })
     };
 
+    waterHistoryButtonHandler = ()=>{
+        this.props.navigation.navigate("WaterHistory");
+    };
+
     render(){
         return(
-        <View style={styles.container}>
-            <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
-            <Image style={styles.image} source={require('../../../public/images/water-glass1.png')}/>
-            {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
-            <Text style={styles.textToday}>Today:</Text>
-            <Text style={styles.textCups}>{this.state.cups} Cups</Text>
-            <View style={{flexDirection: "row",justifyContent: 'space-around'}}>
-                <Icon onPress={this.minusCupOfWater} style={styles.icon}  name="minus"  size={40} color="red"/>
-                <Icon onPress={this.plusCupOfWater} style={styles.icon} name="plus" size={40} color="green"/>
-            </View>
-            <Average average={this.state.average}/>
-            <View style={{flexDirection: 'row',position: 'absolute', bottom: 10}}>
-                <Text>Icons made by </Text> 
-                <Text onPress={()=> Linking.openURL("https://www.flaticon.com/authors/pixel-perfect")} style={{textDecorationLine: 'underline',color: 'blue'}} title="Pixel perfect">Pixel perfect</Text> 
-                <Text> from </Text> 
-                <Text onPress={()=>Linking.openURL("https://www.flaticon.com/")}  style={{textDecorationLine: 'underline',color: 'blue'}} title="Flaticon">www.flaticon.com</Text>
-            </View>
-        </View>
+        <SafeAreaView style={styles.container}>
+            <ScrollView>
+                <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
+                <Image style={styles.image} source={require('../../../public/images/water-glass1.png')}/>
+                <View style={styles.button}>
+                    <Button onPress={this.waterHistoryButtonHandler} title="Water History" />
+                </View>
+                {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
+                <Text style={styles.textToday}>Today:</Text>
+                <Text style={styles.textCups}>{this.state.cups} Cups</Text>
+                <View style={{flexDirection: "row",alignSelf: 'center'}}>
+                    <Icon onPress={this.minusCupOfWater} style={styles.icon}  name="minus"  size={40} color="red"/>
+                    <Icon onPress={this.plusCupOfWater} style={styles.icon} name="plus" size={40} color="green"/>
+                </View>
+                <Average average={this.state.average}/>
+                <View style={{flexDirection: 'row',position: 'absolute', top: 1,alignSelf:'center'}}>
+                    <Text>Icons made by </Text> 
+                    <Text onPress={()=> Linking.openURL("https://www.flaticon.com/authors/pixel-perfect")} style={{textDecorationLine: 'underline',color: 'blue'}} title="Pixel perfect">Pixel perfect</Text> 
+                    <Text> from </Text> 
+                    <Text onPress={()=>Linking.openURL("https://www.flaticon.com/")}  style={{textDecorationLine: 'underline',color: 'blue'}} title="Flaticon">www.flaticon.com</Text>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
         );
     }
 }
@@ -102,28 +112,35 @@ class Water extends React.Component{
 const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
-        alignItems: 'center',
         width: '100%',
         height: '100%',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
     },
     spinner:{
         position: 'absolute',
         top: 5,
         left: 5
     },
+    button: {
+        marginTop: 20,
+        width: '30%',
+        alignSelf:'center'
+    }, 
     image: {
         marginTop: 30,
         width: 250,
-        height: 250
+        height: 250,
+        alignSelf: 'center'
     },
     textToday: {
         marginTop: 20,
-        fontSize: 30
+        fontSize: 30,
+        alignSelf: 'center'
     },
     textCups: {
         marginTop: 10,
-        fontSize: 30
+        fontSize: 30,
+        alignSelf: 'center'
     },
     icon: {
         margin: 10

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Text,Image,View,StyleSheet,ActivityIndicator,Linking} from 'react-native';
+import {Text,SafeAreaView,ScrollView,Image,View,StyleSheet,ActivityIndicator,Linking} from 'react-native';
 import {Button} from 'react-native-elements';
 import Average from '../../../components/Average/Average';
 
@@ -44,6 +44,7 @@ class Sleep extends React.Component{
     }
 
     getAverage = () =>{
+        this.setState({loading: true});
         axios.get(URL+'/sleep/average',{
             headers: {
                 "Authorization": "Bearer "+this.props.token,
@@ -53,7 +54,8 @@ class Sleep extends React.Component{
         .then(response=>{
             this.setState({
                 averageHours: response.data.hours,
-                averageMinutes: response.data.minutes
+                averageMinutes: response.data.minutes,
+                loading: false
             });
         })
         .catch(err=>{
@@ -101,32 +103,34 @@ class Sleep extends React.Component{
 
     render(){
         return(
-            <View style={styles.container}>
-                {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
-                <Image style={styles.image} source={this.state.sleep ? require('../../../public/images/moon.png') : require('../../../public/images/sun.png')}/>
-                {
-                    (this.state.hours || this.state.minutes) ? <Text style={styles.text}>You slept {this.state.hours} hours and {this.state.minutes} minutes</Text> : null
-                }
-                <View style={styles.button}>
-                    <Button onPress={this.sleepButtonHandler} title={this.state.sleep ? "Stop Sleep" : "Sleep"}/>
-                </View>
-                <View style={styles.button}>
-                    <Button onPress={this.historyOfSleepButtonHandler} title="History of Sleep"/>
-                </View>
-                <Average sleep averageHours={this.state.averageHours} averageMinutes={this.state.averageMinutes}/>
-            <View style={{flexDirection: 'row',position: 'absolute', bottom: 30}}>
-                <Text>Icons made by </Text> 
-                <Text onPress={()=> Linking.openURL("https://www.flaticon.com/authors/darius-dan")} style={{textDecorationLine: 'underline',color: 'blue'}} title="Darius Dan">Darius Dan</Text> 
-                <Text> from </Text> 
-                <Text onPress={()=>Linking.openURL("https://www.flaticon.com/")}  style={{textDecorationLine: 'underline',color: 'blue'}} title="Flaticon">www.flaticon.com</Text>
-            </View>
-            <View style={{flexDirection: 'row',position: 'absolute', bottom: 5}}>
-                <Text>Icons made by </Text> 
-                <Text onPress={()=> Linking.openURL("https://www.flaticon.com/authors/catkuro")} style={{textDecorationLine: 'underline',color: 'blue'}} title="catkuro">catkuro</Text> 
-                <Text> from </Text> 
-                <Text onPress={()=>Linking.openURL("https://www.flaticon.com/")}  style={{textDecorationLine: 'underline',color: 'blue'}} title="Flaticon">www.flaticon.com</Text>
-            </View>
-            </View>
+            <SafeAreaView style={styles.container}>
+                <ScrollView>
+                        {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
+                        <Image style={styles.image} source={this.state.sleep ? require('../../../public/images/moon.png') : require('../../../public/images/sun.png')}/>
+                        {
+                            (this.state.hours || this.state.minutes) ? <Text style={styles.text}>You slept {this.state.hours} hours and {this.state.minutes} minutes</Text> : null
+                        }
+                        <View style={styles.button}>
+                            <Button onPress={this.sleepButtonHandler} title={this.state.sleep ? "Wake Up⏰" : "Sleep😴"}/>
+                        </View>
+                        <View style={styles.button}>
+                            <Button onPress={this.historyOfSleepButtonHandler} title="Sleep History"/>
+                        </View>
+                        <Average sleep averageHours={this.state.averageHours} averageMinutes={this.state.averageMinutes}/>
+                    <View style={{flexDirection: 'row',alignSelf: 'center',marginTop: 30}}>
+                        <Text>Icons made by </Text> 
+                        <Text onPress={()=> Linking.openURL("https://www.flaticon.com/authors/darius-dan")} style={{textDecorationLine: 'underline',color: 'blue'}} title="Darius Dan">Darius Dan</Text> 
+                        <Text> from </Text> 
+                        <Text onPress={()=>Linking.openURL("https://www.flaticon.com/")}  style={{textDecorationLine: 'underline',color: 'blue'}} title="Flaticon">www.flaticon.com</Text>
+                    </View>
+                    <View style={{flexDirection: 'row',alignSelf: 'center'}}>
+                        <Text>Icons made by </Text> 
+                        <Text onPress={()=> Linking.openURL("https://www.flaticon.com/authors/catkuro")} style={{textDecorationLine: 'underline',color: 'blue'}} title="catkuro">catkuro</Text> 
+                        <Text> from </Text> 
+                        <Text onPress={()=>Linking.openURL("https://www.flaticon.com/")}  style={{textDecorationLine: 'underline',color: 'blue'}} title="Flaticon">www.flaticon.com</Text>
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
         );
     }
 }
@@ -140,7 +144,6 @@ const mapStateToProps = state => {
 const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
-        alignItems: 'center',
         width: '100%',
         height: '100%',
         backgroundColor: '#fff'
@@ -152,17 +155,20 @@ const styles = StyleSheet.create({
     },
     button:{
         marginTop: '10%',
-        width: 200
+        width: 200,
+        alignSelf: 'center'
     },
     text: {
         fontSize: 20,
         marginTop: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        alignSelf: 'center'
     },
     image: {
         marginTop: 30,
         width: 200,
-        height: 200
+        height: 200,
+        alignSelf: 'center'
     }
 });
 
