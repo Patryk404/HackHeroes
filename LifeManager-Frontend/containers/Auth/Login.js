@@ -34,7 +34,14 @@ class Login extends React.Component {
     }
 
     saveUser = async()=>{
+        if(this.state.username && this.state.password)
+        {
         await Keychain.setGenericPassword(this.state.username,this.state.password);
+        }
+        else {
+            alert("Fill username and password");
+            this.setState({rememberMe: false});
+        }
     }
 
     lostUser = async()=>{

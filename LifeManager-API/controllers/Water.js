@@ -6,7 +6,14 @@ module.exports.getCups = async(req,res,next)=>{
     res.status(200).json({
         cups: account.cups_of_water
     });
-}; 
+};
+ 
+module.exports.getHistory = async(req,res,next)=>{
+    const historyCups = await HistoryCups.find({person: req.userId}).select({cups: 1,date: 1}).sort({date: 'desc'});
+    res.status(200).json({
+        history: historyCups
+    });
+};
 
 module.exports.plusCup = async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});

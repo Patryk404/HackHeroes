@@ -5,6 +5,8 @@ const { ResetAll } = require('../middleware/resetAll');
 
 Router.get('/',isAuth,ResetAll,WaterController.getCups);
 
+Router.get('/history',isAuth,WaterController.getHistory);
+
 Router.get('/average',isAuth,WaterController.getAverage);
 
 Router.put('/plus',isAuth,WaterController.plusCup);

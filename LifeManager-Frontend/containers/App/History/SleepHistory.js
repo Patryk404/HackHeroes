@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     },
     spinner: {
         position: 'absolute',
-        top: 20
+        top: 200
     },
     containerHistory:{
         margin: 20,

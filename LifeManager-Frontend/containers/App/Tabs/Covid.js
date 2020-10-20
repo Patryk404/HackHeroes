@@ -28,14 +28,15 @@ class Covid extends React.Component{
             recovered: 0,
             todayRecovered: 0
         },
-        loading: false
+        loading: false,
+        choosenCountry: "Poland"
     };
 
     componentDidMount(){
         this.updateAll();
     }
     updateAll = ()=>{
-        this.updateCountryOrContinent('Poland');
+        this.updateCountryOrContinent(this.state.choosenCountry);
         this.updateWorld();
     }
     updateWorld = ()=>{
@@ -75,7 +76,8 @@ class Covid extends React.Component{
                     recovered: data.recovered,
                     todayRecovered: data.todayRecovered
                     },
-                    loading: false
+                    loading: false,
+                    choosenCountry: text
                 });
             })
             .catch(err=>{
@@ -96,7 +98,8 @@ class Covid extends React.Component{
                     recovered: data.recovered,
                     todayRecovered: data.todayRecovered
                     },
-                    loading: false
+                    loading: false,
+                    choosenCountry: text
                 });
             })
             .catch(err=>{
@@ -113,7 +116,7 @@ class Covid extends React.Component{
                     <Icon onPress={()=>{alert("Remember to wear a mask and keep a social distance😷")}} name="help" size={38} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
                     <Text style={styles.textTitle}>Covid-19 Tracker</Text>
                     <View style={{width: '23%',position: 'absolute', top: 30,left:30}}>
-                        <Dropdown label="Country" data={countries} value="Poland" onChangeText={(text)=>{this.updateCountryOrContinent(text)}}/>
+                        <Dropdown label="Country" data={countries} value={this.state.choosenCountry} onChangeText={(text)=>{this.updateCountryOrContinent(text)}}/>
                     </View>
                     <Image style={styles.flag} source={{uri: this.state.country.flagImageLink ? this.state.country.flagImageLink : null}}/>
                     <View style={styles.containerData}>
@@ -213,6 +216,9 @@ const countries = [
     },
     {
         value: 'Europe'
+    },
+    {
+        value: 'USA'
     }
 ]
 
