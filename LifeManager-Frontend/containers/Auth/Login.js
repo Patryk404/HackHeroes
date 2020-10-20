@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Text,ActivityIndicator,StyleSheet} from 'react-native';
+import {View,Text,Image,ActivityIndicator,StyleSheet} from 'react-native';
 import {Button,Input} from 'react-native-elements';
 
 import * as actions from '../../store/actions/index';
@@ -51,6 +51,7 @@ class Login extends React.Component {
     render(){
         return(
             <View style={styles.container}>
+                <Image source={require('../../public/images/logo.png')} style={styles.image}/>
                 <Text style={styles.text}>Manage Your Life😉</Text>
                 <Input placeholder='Username' style={styles.input} value={this.state.username} onChangeText={value=>this.handleInputChange('username',value)}/>
                 <Input placeholder='Password' style={styles.input} secureTextEntry={true} value={this.state.password} onChangeText={value=>this.handleInputChange('password',value)}/>
@@ -80,9 +81,14 @@ const styles = StyleSheet.create({
     },
     text:{
         fontSize: 40,
-        marginTop: 100,
+        marginTop: '35%',
         textAlign: 'center',
         color: 'black'
+    },
+    image:{
+        position: 'absolute',
+        width: 150,
+        height: 150
     },
     input: {
         marginTop: 20
