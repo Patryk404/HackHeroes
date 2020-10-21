@@ -1,6 +1,7 @@
 const Account = require('../models/account');
 const Product = require('../models/product');
 const HistoryCalories = require('../models/historyCalories');
+const {getAverageCalorie} = require('../utils/getAverageCalorie');
 
 module.exports.getCalories = async (req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
@@ -13,14 +14,9 @@ module.exports.getCalories = async (req,res,next)=>{
 };
 
 module.exports.getCaloriesAverage = async(req,res,next)=>{
-    const historyCalories = await HistoryCalories.find({person: req.userId}).select({calories:1}).sort({date: 'desc'}).limit(7);
-    let caloriesSum = 0;
-    historyCalories.map(calorie=>{
-        caloriesSum+=calorie.calories;
-    });
-    const calorieAverage = caloriesSum/historyCalories.length;
+    const calorieAverage = await getAverageCalorie(req.userId);
     res.status(200).json({
-        average: parseInt(calorieAverage.toFixed(0))
+        average: calorieAverage
     });
 };
 

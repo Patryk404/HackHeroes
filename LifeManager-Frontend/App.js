@@ -6,7 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import Login from './src/containers/Auth/Login';
 import Register from './src/containers/Auth/Register';
-import MainApp from './src/containers/Navigators/Main';
+import MainApp from './src/containers/Navigators/TabsMain';
 
 import authReducer from './src/store/reducers/auth';
 

@@ -2,6 +2,7 @@ const HistorySleep = require('../models/historySleep');
 const Account = require('../models/account');
 const {msToTime} = require('../utils/milisecondsToTime');
 const {addHours} = require('../utils/addHours'); 
+const {getAverageSleep} = require('../utils/getAverageSleep');
 
 module.exports.getSleep = async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
@@ -16,6 +17,14 @@ module.exports.getHistory = async(req,res,next)=>{
         history: historySleep
     });
 };  
+
+module.exports.getAverage = async(req,res,next)=>{
+    const [hoursAverage,minutesAverage] = await getAverageSleep(req.userId);
+    res.status(200).json({
+        hours: hoursAverage,
+        minutes: minutesAverage
+    });
+};
 
 module.exports.startSleep= async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
@@ -64,20 +73,4 @@ module.exports.stopSleep=async(req,res,next)=>{
             message: "You don't sleep"
         });
     }
-};
-
-module.exports.getAverage = async(req,res,next)=>{
-    const historySleeps = await HistorySleep.find({person: req.userId}).sort({date_finished: 'desc'}).limit(7);
-    let hoursSum = 0;
-    let minutesSum = 0;
-    historySleeps.map(sleep=>{
-        hoursSum += sleep.sleep_hours;
-        minutesSum += sleep.sleep_minutes;
-    });
-    const hoursAverage = hoursSum/historySleeps.length;
-    const minutesAverage = minutesSum/historySleeps.length;
-    res.status(200).json({
-        hours: parseInt(hoursAverage.toFixed(0)),
-        minutes: parseInt(minutesAverage.toFixed(0))
-    });
 };

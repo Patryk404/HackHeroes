@@ -35,7 +35,8 @@ module.exports.signUp= async (req,res,next)=>{
         cups_of_water: 0,
         calories: 0,
         calories_range: 2500,
-        sleep: false});
+        sleep: false,
+        gender: req.body.gender});
     const token = await jwt.sign({id: account._id.toString()},"secret_"/*,{expiresIn: '1h'}*/); // "secret_" też może być w zmiennej środowiskowej
     await account.save();
     res.status(201).json({

@@ -6,6 +6,7 @@ const AuthRoute = require('./routes/Auth');
 const CaloriesRoute = require('./routes/Calories');
 const WaterRoute = require('./routes/Water');
 const SleepRoute = require('./routes/Sleep');
+const MeRoute = require('./routes/Me');
 const helmet = require("helmet");
 
 app.use(helmet());
@@ -21,6 +22,8 @@ app.use((req, res, next) => {//cors policy
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Origin, Authorization, id');
     next();
   });
+
+app.use('/me',MeRoute); 
 
 app.use('/auth',AuthRoute);
 

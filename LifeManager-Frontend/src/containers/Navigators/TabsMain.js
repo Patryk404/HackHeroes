@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabView, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -9,6 +9,7 @@ import Sleep from './SleepMain';
 import Calories from './CaloriesMain'
 import Water from './WaterMain';
 import Covid from '../Tabs/Covid/Covid';
+import Profile from '../Tabs/Profile';
 
 class Main extends React.Component {
     render(){
@@ -19,19 +20,24 @@ class Main extends React.Component {
                         <Icon name="hotel" size={25} color='black'/>
                     ))
                 }}/>
-                <Tab.Screen name="Calories" component={Calories} options={{
-                    tabBarIcon: (()=>(
-                        <Icon name="food" size={25} color='black'/>
-                    ))
-                }}/>
                 <Tab.Screen name="Water" component={Water} options={{
                     tabBarIcon: (()=>(
                         <Icon name="opacity" size={25} color='black'/>
                     ))
                 }}/>
+                <Tab.Screen name="Calories" component={Calories} options={{
+                    tabBarIcon: (()=>(
+                        <Icon name="food" size={25} color='black'/>
+                    ))
+                }}/>
                 <Tab.Screen name="Covid-19" component={Covid} options={{
                     tabBarIcon: (()=>(
                         <Icon name="bacteria" size={25} color='black'/>
+                    ))
+                }}/>
+                <Tab.Screen name="Profile" component={Profile}  options={{
+                    tabBarIcon: (()=>(
+                        <Icon name="account" size={25} color='black'/>
                     ))
                 }}/>
             </Tab.Navigator>

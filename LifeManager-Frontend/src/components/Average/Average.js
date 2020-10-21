@@ -16,7 +16,7 @@ const Average = (props)=> {
         return(
             <View>
                 <Text style={styles.text}>Average for 7 days:</Text>
-                <Text style={styles.text}>{isNaN(props.average) ? 0 : parseInt(props.average)}{props.calories ? "kcal": " Cups"}</Text>
+                <Text style={styles.text}>{props.average ? props.average : 0 }{props.calories ? "kcal": " Cups"}</Text>
             </View> 
         );
     }

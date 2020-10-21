@@ -36,6 +36,10 @@ const accountSchema = new mongoose.Schema({
     sleep: {
         type: Boolean,
         required: true
+    },
+    gender: {
+        type: String,
+        required: true
     }
 });
 

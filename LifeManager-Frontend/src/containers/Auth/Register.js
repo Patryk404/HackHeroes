@@ -1,6 +1,7 @@
 import React from 'react'
 import {View,Text,ActivityIndicator,StyleSheet} from 'react-native';
 import {Button,Input} from 'react-native-elements';
+import {Dropdown} from 'react-native-material-dropdown-v2';
 
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
@@ -13,6 +14,7 @@ class Register extends React.Component {
         username: '',
         password: '',
         email: '',
+        gender: 'Male',
         loading: false,
         error: undefined,
     };
@@ -23,12 +25,17 @@ class Register extends React.Component {
         });
     };
 
+    handleDropdownChange = (gender)=>{
+        this.setState({gender: gender});
+    }
+
     handleButtonRegister=()=>{
         this.setState({loading: true});
         axios.post(URL+'/auth/signup',{
             email: this.state.email,
             username: this.state.username,
             password: this.state.password,
+            gender: this.state.gender
         },{
             headers: {
                'Content-Type': 'application/json'
@@ -52,6 +59,9 @@ class Register extends React.Component {
                 <Input placeholder="Email" style={styles.input} value={this.state.email} onChangeText={value=>this.handleInputChange('email',value)}/>
                 <Input placeholder='Username' style={styles.input} value={this.state.username} onChangeText={value=>this.handleInputChange('username',value)}/>
                 <Input placeholder='Password' style={styles.input} secureTextEntry={true} value={this.state.password} onChangeText={value=>this.handleInputChange('password',value)}/>
+                <View style={styles.dropdown}>
+                    <Dropdown label="Gender" data={[{value: 'Male'},{value: 'Female'}]} value={this.state.gender} onChangeText={(gender)=>{this.handleDropdownChange(gender)}}/>
+                </View>
                 {this.state.loading ? <ActivityIndicator size="large" color="#0000ff" style={{marginTop: 40}}/>  :
                 <View style={styles.button} >
                 <Button title="Register" onPress={this.handleButtonRegister}/>
@@ -81,6 +91,9 @@ const styles = StyleSheet.create({
     button: {
         width: '50%',
         marginTop: 40
+    },
+    dropdown: {
+        width: '30%'
     }
   });
 
