@@ -4,10 +4,10 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {connect} from 'react-redux';
-import * as actions from '../../../store/actions/index';
+import * as actions from '../../store/actions/index';
 
 import axios from 'axios';
-import {URL} from '../../../public/url'; 
+import {URL} from '../../public/url'; 
 
 import Product from './Product';
 

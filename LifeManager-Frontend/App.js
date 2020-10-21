@@ -4,11 +4,11 @@ import {createStore} from 'redux';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
-import Login from './containers/Auth/Login';
-import Register from './containers/Auth/Register';
-import MainApp from './containers/App/Navigators/Main';
+import Login from './src/containers/Auth/Login';
+import Register from './src/containers/Auth/Register';
+import MainApp from './src/containers/Navigators/Main';
 
-import authReducer from './store/reducers/auth';
+import authReducer from './src/store/reducers/auth';
 
 const store = createStore(authReducer);
 

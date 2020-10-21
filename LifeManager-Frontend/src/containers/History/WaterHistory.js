@@ -2,7 +2,7 @@ import React from 'react';
 import {View,SafeAreaView,ScrollView,ActivityIndicator,Text,StyleSheet} from 'react-native';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
 
@@ -46,12 +46,6 @@ class WaterHistory extends React.Component{
     }
 }
 
-const mapStateToProps = state=>{
-    return{
-        token: state.token
-    }
-}
-
 const styles = StyleSheet.create({
     container:{
         alignSelf: 'center',
@@ -73,5 +67,11 @@ const styles = StyleSheet.create({
         marginTop: 10
     }
 });
+
+const mapStateToProps = state=>{
+    return{
+        token: state.token
+    }
+}
 
 export default connect(mapStateToProps)(WaterHistory);

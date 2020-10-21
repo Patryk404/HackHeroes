@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView,View,Text,ActivityIndicator,ScrollView,StyleSheet} from 'react-native';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
 

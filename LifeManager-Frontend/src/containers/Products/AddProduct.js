@@ -3,10 +3,10 @@ import {View,StyleSheet} from 'react-native';
 import {Input,Button} from 'react-native-elements';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
-import * as actions from '../../../store/actions/index';
+import * as actions from '../../store/actions/index';
 
 class AddProduct extends React.Component{
     state = {

@@ -3,10 +3,10 @@ import React from 'react';
 import {View,Image,SafeAreaView,ScrollView,StyleSheet,ActivityIndicator,Text,Linking} from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Average from '../../../components/Average/Average';
+import Average from '../../components/Average/Average';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
 
@@ -85,7 +85,7 @@ class Water extends React.Component{
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <Icon onPress={this.update} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
-                <Image style={styles.image} source={require('../../../public/images/water-glass1.png')}/>
+                <Image style={styles.image} source={require('../../public/images/water-glass1.png')}/>
                 <View style={styles.button}>
                     <Button onPress={this.waterHistoryButtonHandler} title="Water History" />
                 </View>

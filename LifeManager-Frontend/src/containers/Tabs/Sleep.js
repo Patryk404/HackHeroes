@@ -2,10 +2,10 @@ import React from 'react';
 
 import {Text,SafeAreaView,ScrollView,Image,View,StyleSheet,ActivityIndicator,Linking} from 'react-native';
 import {Button} from 'react-native-elements';
-import Average from '../../../components/Average/Average';
+import Average from '../../components/Average/Average';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
 
@@ -106,7 +106,7 @@ class Sleep extends React.Component{
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                         {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
-                        <Image style={styles.image} source={this.state.sleep ? require('../../../public/images/moon.png') : require('../../../public/images/sun.png')}/>
+                        <Image style={styles.image} source={this.state.sleep ? require('../../public/images/moon.png') : require('../../public/images/sun.png')}/>
                         {
                             (this.state.hours || this.state.minutes) ? <Text style={styles.text}>You slept {this.state.hours} hours and {this.state.minutes} minutes</Text> : null
                         }
@@ -134,12 +134,6 @@ class Sleep extends React.Component{
         );
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        token: state.token
-    }
-};
 
 const styles = StyleSheet.create({
     container: {
@@ -171,5 +165,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     }
 });
+
+const mapStateToProps = state => {
+    return {
+        token: state.token
+    }
+};
 
 export default connect(mapStateToProps)(Sleep);

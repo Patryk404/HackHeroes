@@ -4,10 +4,10 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
-import * as actions from '../../../store/actions/index';
+import * as actions from '../../store/actions/index';
 
 const Product = (props)=>{
     const buttonHandler = ()=>{

@@ -2,7 +2,7 @@ import React from 'react';
 import {View,SafeAreaView,ScrollView,ActivityIndicator,Text,StyleSheet} from 'react-native';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
 
@@ -52,12 +52,6 @@ class SleepHistory extends React.Component{
     }
 };
 
-const mapStateToProps = state =>{
-    return {
-        token: state.token
-    }
-}
-
 const styles = StyleSheet.create({
     container:{ 
         width: '100%',
@@ -84,5 +78,11 @@ const styles = StyleSheet.create({
         marginTop: 5
     }
 });
+
+const mapStateToProps = state =>{
+    return {
+        token: state.token
+    }
+}
 
 export default connect(mapStateToProps)(SleepHistory);

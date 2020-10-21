@@ -18,12 +18,14 @@ class Login extends React.Component {
         error: '',
         rememberMe: false
     };
+
     async componentDidMount(){
         if(await Keychain.getGenericPassword()){
             const credentials = await Keychain.getGenericPassword();
             this.setState({rememberMe: true,username: credentials.username, password: credentials.password});
         }
     }
+    
     async componentDidUpdate(){
         if(this.state.rememberMe===true){
             await this.saveUser();
@@ -74,8 +76,7 @@ class Login extends React.Component {
             this.props.navigation.navigate('MainApp');
         })
         .catch(err=>{
-            this.setState({loading: false});
-            this.setState({error: err});
+            this.setState({loading: false,error: err});
             console.log(err);
         });
     };
@@ -92,8 +93,11 @@ class Login extends React.Component {
                     <Text style={styles.text}>Manage Your Life😉</Text>
                     <Input placeholder='Username' style={styles.input} value={this.state.username} onChangeText={value=>this.handleInputChange('username',value)}/>
                     <Input placeholder='Password' style={styles.input} secureTextEntry={true} value={this.state.password} onChangeText={value=>this.handleInputChange('password',value)}/>
-                    {this.state.loading ? 
-                    <ActivityIndicator size="large" color="#0000ff" style={{marginTop: 40}}/> :
+                    {
+                    this.state.loading 
+                    ? 
+                    <ActivityIndicator size="large" color="#0000ff" style={{marginTop: 40}}/> 
+                    :
                     <View style={styles.button} >
                     <Button title="Login" onPress={this.handleButtonLogin}/>
                     </View>
@@ -149,7 +153,7 @@ const styles = StyleSheet.create({
 
   const mapDispatchToProps = dispatch =>{
       return {
-    onLogged: token=>dispatch(actions.loggedInto(token))
+        onLogged: token=>dispatch(actions.loggedInto(token))
     };
   };   
   

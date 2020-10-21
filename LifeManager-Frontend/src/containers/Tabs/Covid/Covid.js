@@ -1,6 +1,9 @@
 import React from 'react';
 
-import {View,SafeAreaView,ScrollView,Text,ActivityIndicator,Image,StyleSheet, TouchableNativeFeedbackBase} from 'react-native';
+import countries from './Countries';
+import InformationsCountry from '../../../components/Informations/InformationsCountry';
+import InformationsWorld from '../../../components/Informations/InformationsWorld';
+import {View,SafeAreaView,ScrollView,Text,ActivityIndicator,Image,StyleSheet} from 'react-native';
 import {Dropdown} from 'react-native-material-dropdown-v2';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -118,34 +121,8 @@ class Covid extends React.Component{
                     <View style={{width: '23%',position: 'absolute', top: 30,left:30}}>
                         <Dropdown label="Country" data={countries} value={this.state.choosenCountry} onChangeText={(text)=>{this.updateCountryOrContinent(text)}}/>
                     </View>
-                    <Image style={styles.flag} source={{uri: this.state.country.flagImageLink ? this.state.country.flagImageLink : null}}/>
-                    <View style={styles.containerData}>
-                        <Text style={styles.textData}>Cases: {this.state.country.cases}</Text>
-                        <Text style={styles.textData}>Today Cases: {this.state.country.todayCases}</Text>
-                        <Text style={styles.textData}>Active: {this.state.country.active}</Text>
-                    </View>
-                    <View style={styles.containerData}>
-                        <Text style={styles.textData}>Deaths: {this.state.country.deaths}</Text>
-                        <Text style={styles.textData}>Today Deaths: {this.state.country.todayDeaths}</Text>
-                    </View>
-                    <View style={styles.containerData}>
-                        <Text style={styles.textData}>Recovered: {this.state.country.recovered}</Text>
-                        <Text style={styles.textData}>Today Recovered: {this.state.country.todayRecovered}</Text>
-                    </View>
-                    <Text style={{alignSelf: 'center',fontSize: 100}}>🌎</Text>
-                    <View style={styles.containerData}>
-                        <Text style={styles.textData}>Cases: {this.state.world.cases}</Text>
-                        <Text style={styles.textData}>Today Cases: {this.state.world.todayCases}</Text>
-                        <Text style={styles.textData}>Active: {this.state.world.active}</Text>
-                    </View>
-                    <View style={styles.containerData}>
-                        <Text style={styles.textData}>Deaths: {this.state.world.deaths}</Text>
-                        <Text style={styles.textData}>Today Deaths: {this.state.world.todayDeaths}</Text>
-                    </View>
-                    <View style={styles.containerData}>
-                        <Text style={styles.textData}>Recovered: {this.state.world.recovered}</Text>
-                        <Text style={styles.textData}>Today Recovered: {this.state.world.todayRecovered}</Text>
-                    </View>
+                    <InformationsCountry country={this.state.country}/>
+                    <InformationsWorld world={this.state.world}/>
                 </ScrollView>
             </SafeAreaView>
         );
@@ -166,60 +143,8 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         fontWeight: 'bold'
-    },
-    flag: {
-        width: 150,
-        height: 90,
-        alignSelf: 'center',
-        marginBottom: 10,
-        marginTop: 10
-    },
-    containerData:{
-        alignSelf: 'center',
-        marginTop: 20,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        width: '70%'
-    },
-    textData: {
-        fontSize: 20,
-        margin: 10,
-        fontWeight: 'bold',
-        textAlign: 'center'
     }
 });
 
-const countries = [
-    {
-        value: 'Poland'
-    },
-    {
-        value: 'Germany'
-    },
-    {
-        value: 'England'
-    },
-    {
-        value: 'Italy'
-    },
-    {
-        value: 'Netherlands'
-    },
-    {
-        value: 'Czech Republic'
-    },
-    {
-        value: 'Slovakia'
-    },
-    {
-        value: 'Ukraine'
-    },
-    {
-        value: 'Europe'
-    },
-    {
-        value: 'USA'
-    }
-]
 
 export default Covid;

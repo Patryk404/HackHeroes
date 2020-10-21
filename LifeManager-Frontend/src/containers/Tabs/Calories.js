@@ -3,13 +3,13 @@ import {Text,StyleSheet,View,ActivityIndicator} from 'react-native';
 import {Button,Input, ThemeConsumer} from 'react-native-elements';
 import PercentageCircle from 'react-native-percentage-circle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Average from '../../../components/Average/Average';
+import Average from '../../components/Average/Average';
 
 import axios from 'axios';
-import {URL} from '../../../public/url';
+import {URL} from '../../public/url';
 
 import {connect} from 'react-redux';
-import * as actions from '../../../store/actions/index';
+import * as actions from '../../store/actions/index';
 
 class Calories extends React.Component {
     state={
@@ -142,21 +142,6 @@ class Calories extends React.Component {
     }
 };
 
-const mapStateToProps = state => {
-    return {
-        logged: state.logged,
-        token: state.token,
-        update: state.update
-    }
-};
-
-const mapDispatchToProps = dispatch =>{
-    return {
-        offUpdate: ()=>dispatch(actions.offUpdateComponent()),
-        logOut: ()=>dispatch(actions.logOut())
-    };
-}
-
 const styles = StyleSheet.create({
     button: {
         marginTop: 10,
@@ -177,5 +162,20 @@ const styles = StyleSheet.create({
         alignItems: "center"
     }
 });
+
+const mapStateToProps = state => {
+    return {
+        logged: state.logged,
+        token: state.token,
+        update: state.update
+    }
+};
+
+const mapDispatchToProps = dispatch =>{
+    return {
+        offUpdate: ()=>dispatch(actions.offUpdateComponent()),
+        logOut: ()=>dispatch(actions.logOut())
+    };
+}
 
 export default connect(mapStateToProps,mapDispatchToProps)(Calories);
