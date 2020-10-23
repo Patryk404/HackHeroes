@@ -127,7 +127,7 @@ class Calories extends React.Component {
                     <Button onPress={this.buttonProductsHandler} title="Products"/>
                 </View>  
                 <View style={styles.button}>
-                    <Button onPress={this.buttonHistoryOfCaloriesHandler} title="Calorie History"/>
+                    <Button onPress={this.buttonHistoryOfCaloriesHandler} title="Calories History"/>
                 </View> 
                 <Average calories average={this.state.average}/>
             </View>
