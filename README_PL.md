@@ -21,6 +21,11 @@ W swoim rozwiązaniu zdecydowałem się na użycie frameworka <a href="https://r
 ## Instalacja
 Gotowy plik `.apk` znajduje się w folderze `build`, wystarczy go tylko wrzucić na swoje urządzenie z androidem i zainstalować. Gotowe rozwiązanie korzysta z API, które jest dostępne pod tym linkiem: https://healthjournalapi.herokuapp.com/.
 
+## Konto do celów testowych
+Jeśli nie chcesz rejestrować się w mojej aplikacji, możesz użyć konta testowego:
+Nazwa Użytkownika: test
+Hasło: test
+
 ## Przyszłość
 * Historia produktów, które użytkownik spożył w dany dzień i o której godzinie. 
 * Wykresy na ostatnie 7 dni, 1 miesiąc czy nawet cały rok, jeśli chodzi o średnią ilość snu czy kalorii. 

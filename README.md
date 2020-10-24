@@ -41,7 +41,10 @@ In my solution I decided to use <a href="https://reactnative.dev/">React Native<
 
 The ready file `.apk` is located in the `build` folder, you only need to throw it on your android device and install. The finished solution uses the API, which is available at this link: https://healthjournalapi.herokuapp.com/.
 
-  
+## Account for testing purpose
+If you don't want to register in my app, you can use testing account: 
+username: test 
+password: test
 
 ## Future
 

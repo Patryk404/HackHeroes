@@ -242,7 +242,7 @@ Pobiera dane na temat użytkownika.
 * * Przykładowa odpowiedź:
 ```json
 {
-	message: "Succesfully deleted product"
+	"message": "Succesfully deleted product"
 }
 ```
 * * Opis:
