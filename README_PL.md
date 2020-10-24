@@ -11,7 +11,7 @@ Projekt ma na celu pomóc nam kontrolować funkcje życiowe takie jak dieta, cza
 <img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/calories.png">
 <img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/covid.png">
 <img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/water.png">
-<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/about.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/profile.png">
 <img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleep.png">
 
 ## Technologia 

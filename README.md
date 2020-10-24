@@ -23,7 +23,7 @@ The project aims to help us control vital functions such as diet, sleeping time 
 
 <img  height="500"  width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/water.png">
 
-<img  height="500"  width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/about.png">
+<img  height="500"  width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/profile.png">
 
 <img  height="500"  width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleep.png">
 

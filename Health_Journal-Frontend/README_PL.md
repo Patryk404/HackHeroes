@@ -39,17 +39,17 @@ Następnie wygeneruj plik `debug.keystore` w folderze `android/app` poprzez kome
 Na końcu skompiluj aplikacje w Android Studio oraz uruchom w folderze komendę `npm start`.
 
 ## Zrzuty ekranu
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/login.png">
-<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/register.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/calories.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/products.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/addproduct.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/calorieshistory.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/water.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/waterhistory.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleep.png">
-<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleephistory.png">
-<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/covid.png">
-<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/profile.png">
-<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/bmiinfo.png">
-<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/bmicalculator.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/login.png">
+<img height="500" width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/register.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/calories.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/products.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/addproduct.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/calorieshistory.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/water.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/waterhistory.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleep.png">
+<img height="500" width="300" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleephistory.png">
+<img height="500" width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/covid.png">
+<img height="500" width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/profile.png">
+<img height="500" width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/bmiinfo.png">
+<img height="500" width="300"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/bmicalculator.png">
