@@ -15,7 +15,7 @@ const CaloriesMain = props => {
             <Stack.Screen name="Calories" component={Calories} options={{headerShown: false}}/>
             <Stack.Screen name="Products" component={ProductList} options={{headerStyle: {backgroundColor: '#2587DD'},headerTitleStyle: {color: 'white'},headerTintColor: 'white'}}/>
             <Stack.Screen name="AddProduct" component={AddProduct} options={{headerStyle: {backgroundColor: '#2587DD'},headerTitleStyle: {color: 'white'},headerTintColor: 'white',title: 'Add Product'}}/>
-            <Stack.Screen name="CaloriesHistory" component={CaloriesHistory} options={{headerStyle: {backgroundColor: '#2587DD'},headerTitleStyle: {color: 'white'},headerTintColor: 'white',title: 'Calorie History'}}/>
+            <Stack.Screen name="CaloriesHistory" component={CaloriesHistory} options={{headerStyle: {backgroundColor: '#2587DD'},headerTitleStyle: {color: 'white'},headerTintColor: 'white',title: 'Calories History'}}/>
         </Stack.Navigator>
     );
 }

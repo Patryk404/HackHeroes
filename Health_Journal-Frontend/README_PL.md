@@ -20,7 +20,7 @@ Front-end został stworzony dzięki:
 ## Instalacja
 Jeśli chcesz zobaczyć projekt od kuchni musisz zainstalować <a href="https://developer.android.com/studio">Android Studio</a>. 
 Później postępuj zgodnie z intrukcjami:  https://reactnative.dev/docs/environment-setup.
-Zainstaluj <a href="https://nodejs.org/en/">node.js</a>
+Zainstaluj <a href="https://nodejs.org/en/">node.js</a>.
 W folderze wywołaj `npm install`.
 Wejdź do folderu `node_modules`, znajdź folder o nazwie `react-native-percentage-circle` i edytuj plik `index.js`, usuwając z niego:
 ```JavaScript
@@ -35,5 +35,5 @@ propTypes: {
 	disabled: React.PropTypes.bool,
 }
 ```
-Następnie wygeneruj plik `debug.keystore` w folderze `android/app` poprzez komende `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000`
-Na końcu skompiluj aplikacje w Android Studio oraz uruchom w folderze komende `npm start`.
+Następnie wygeneruj plik `debug.keystore` w folderze `android/app` poprzez komendę `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000`
+Na końcu skompiluj aplikacje w Android Studio oraz uruchom w folderze komendę `npm start`.
