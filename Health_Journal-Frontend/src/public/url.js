@@ -1,1 +1,1 @@
-export const URL = 'https://hackheroesapi.herokuapp.com'
+export const URL = 'https://healthjournalapi.herokuapp.com'

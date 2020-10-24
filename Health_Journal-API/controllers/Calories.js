@@ -54,7 +54,7 @@ module.exports.getFood = async(req,res,next)=>{
 };
 
 module.exports.deleteFood = async(req,res,next)=>{
-    const productId = req.get('id');
+    const productId = req.params.id;
     try {
     await Product.deleteOne({_id: productId});
     res.status(202).json({
@@ -67,7 +67,7 @@ module.exports.deleteFood = async(req,res,next)=>{
 };
 
 module.exports.eatFood = async(req,res,next)=>{
-    const product = await Product.findOne({_id: req.body.id});
+    const product = await Product.findOne({_id: req.params.id});
     const account = await Account.findOne({_id: req.userId});
 
     account.calories += product.calories;

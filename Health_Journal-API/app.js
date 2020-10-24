@@ -19,7 +19,7 @@ app.use((req, res, next) => {//cors policy
       'Access-Control-Allow-Methods',
       'OPTIONS, GET, POST, PUT, PATCH, DELETE'
     );
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Origin, Authorization, id');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Origin, Authorization');
     next();
   });
 

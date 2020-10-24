@@ -1,5 +1,5 @@
 const Account = require('../models/account');
-const historyCalories = require('../models/historyCalories');
+const HistoryCalories = require('../models/historyCalories');
 const HistoryCups = require('../models/historyCupsOfWater');
 const {isDateOlder} = require('../utils/checkDate');
 const {addHours} = require('../utils/addHours');

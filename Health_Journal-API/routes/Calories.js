@@ -11,12 +11,12 @@ Router.get('/food',isAuth,ResetAll,CaloriesController.getFood);
 
 Router.get('/history',isAuth,ResetAll,CaloriesController.getHistoryCalories);
 
-Router.delete('/food',isAuth,CaloriesController.deleteFood);
+Router.delete('/food/:id',isAuth,CaloriesController.deleteFood);
 
 Router.patch('/intake',isAuth,CaloriesController.newIntake)
 
-Router.post('/food',isAuth,CaloriesController.createFood);
+Router.put('/eatfood/:id',isAuth,CaloriesController.eatFood);
 
-Router.post('/eatfood',isAuth,CaloriesController.eatFood);
+Router.post('/food',isAuth,CaloriesController.createFood);
 
 module.exports = Router;

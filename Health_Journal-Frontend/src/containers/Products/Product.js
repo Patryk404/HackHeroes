@@ -11,9 +11,7 @@ import * as actions from '../../store/actions/index';
 
 const Product = (props)=>{
     const buttonHandler = ()=>{
-        axios.post(URL+'/calories/eatfood',{
-            id: props._id
-        },{
+        axios.put(URL+'/calories/eatfood/'+props._id,{},{
             headers:{
                 "Authorization": "Bearer "+props.token,
                 "Content-Type": "application/json"
@@ -28,11 +26,10 @@ const Product = (props)=>{
         })
     }
     const deleteHandler = ()=>{
-        axios.delete(URL+'/calories/food',{
+        axios.delete(URL+'/calories/food/'+props._id,{
             headers:{
                 "Authorization": "Bearer "+props.token,
-                "Content-Type": "application/json",
-                "id": props._id
+                "Content-Type": "application/json"
             }   
         })
         .then(response=>{
