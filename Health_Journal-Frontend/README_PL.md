@@ -37,3 +37,19 @@ propTypes: {
 ```
 Następnie wygeneruj plik `debug.keystore` w folderze `android/app` poprzez komendę `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000`
 Na końcu skompiluj aplikacje w Android Studio oraz uruchom w folderze komendę `npm start`.
+
+## Zrzuty ekranu
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/login.png">
+<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/register.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/calories.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/products.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/addproduct.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/calorieshistory.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/water.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/waterhistory.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleep.png">
+<img height="300" width="175" src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/sleephistory.png">
+<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/covid.png">
+<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/profile.png">
+<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/bmiinfo.png">
+<img height="300" width="175"  src="https://raw.githubusercontent.com/Patryk404/Health_Journal/master/images/bmicalculator.png">
