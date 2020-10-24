@@ -23,14 +23,14 @@ Token API musi być wysłany jako część każdego żądania w postaci nagłów
 "Content-Type": "application/json"
 ```
 * * Ciało: 
-```sh
+```json
 {
 	"username": "your_username",
 	"password": "your_password"
 }
 ```
 *  * Przykładowa odpowiedź: 
-```sh
+```jsjson
 {
 	"message": "Logged",
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTAzYWI4MmFhOWNmMWYwY2NiMzk5ZSIsImlhdCI6MTYwMzUyODUxOX0.jhWyNF3wbbhQt94D1ZUp0YNhBFqnjveiPefWzN1Sgfdshg"
@@ -45,7 +45,7 @@ Loguje użytkownika.
 "Content-Type": "application/json"
 ```
 * * Ciało: 
-```sh
+```json
 {
 	"email": "example@email",
 	"username": "your_username",
@@ -54,7 +54,7 @@ Loguje użytkownika.
 }
 ```
 *  * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"message": "Succesfully created account",
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTAzYWI4MmFhOWNmMWYwY2NiMzk5ZSIsImlhdCI6MTYwMzUyODUxOX0.jgfdlhgkdsfhgkjshgishgasd"
@@ -72,7 +72,7 @@ Rejestruje użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź:
-```sh
+```json
 {
 	"gender":  "Male",
 	"height":  180,
@@ -95,7 +95,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało:
-```sh
+```json
 {
 	"Height": 180,
 	"Weight": 72,
@@ -103,7 +103,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Przykładowa odpowiedź:
-```sh
+```json
 {
 	"message": "Successfuly updated Informations"
 }
@@ -120,7 +120,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź :
-```sh
+```json
 {
 	"calories": 0,
 	"calories_range": 2500
@@ -136,7 +136,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"average": 1000
 }
@@ -151,7 +151,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź:
-```sh
+```json
 {
 	"food": [
 		{
@@ -174,7 +174,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"history":  [
 		{
@@ -197,14 +197,14 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało:
-```sh
+```json
 {
 	"title": "bread",
 	"calories": 100
 }
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"message":  "Succesfully created Product"
 }
@@ -219,13 +219,13 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało:
-```sh
+```json
 {
 
 }
 ```
 * * Przykładowa odpowiedź:
-```sh
+```json
 {
 	"message":  "Food was eaten"
 }
@@ -240,7 +240,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź:
-```sh
+```json
 {
 	message: "Succesfully deleted product"
 }
@@ -255,13 +255,13 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało:
-```sh
+```json
 {
 	"intake": 2000
 }
 ```
 * * Przykładowa odpowiedź:
-```sh
+```json
 {
 	"message":  "Succesfully patch caloriesIntake"
 }
@@ -278,7 +278,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
  * * Przykładowa odpowiedź: 
- ```sh
+ ```json
  {
 	"sleep": false	 
  }
@@ -293,7 +293,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
  * * Przykładowa odpowiedź: 
- ```sh
+ ```json
  {
 	"sleep": false	 
  }
@@ -308,7 +308,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
  * * Przykładowa odpowiedź
- ```sh
+ ```json
  {
 	"hours":  9,
 	"minutes":  20
@@ -324,13 +324,13 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało: 
-```sh
+```json
 {
 	
 }
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"message":  "You sleep"
 }
@@ -345,13 +345,13 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało: 
-```sh
+```json
 {
 	
 }
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"hours":  0,
 	"minutes":  3	
@@ -369,7 +369,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"cups":  0
 }
@@ -384,7 +384,7 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"history":  [
 		{
@@ -405,13 +405,13 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało:
-```sh
+```json
 {
 
 }
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"message":  "updated cups"
 }
@@ -426,16 +426,28 @@ Pobiera dane na temat użytkownika.
 "Authorization": "Bearer mytoken"
 ```
 * * Ciało:
-```sh
+```json
 {
 
 }
 ```
 * * Przykładowa odpowiedź: 
-```sh
+```json
 {
 	"message":  "updated cups"
 }
 ```
 * * Opis:
 	Aktualizuje ilość kubków wody poprzez odjęcie jednego.
+
+## Technologie
+* <a href="https://nodejs.org/en/">node.js</a>
+* <a href="https://expressjs.com/">express.js</a>
+* <a href="https://www.npmjs.com/package/body-parser">body-parser</a>
+* <a href="https://helmetjs.github.io/">helmet</a>
+* <a href="https://mongoosejs.com/">mongoose</a>
+* <a href="https://jwt.io/">jsonwebtoken</a>
+* <a href="https://www.npmjs.com/package/bcrypt">bcrypt</a>
+
+## Instalacja lokalna
+Jeśli chcesz zainstalować API lokalnie pobierz <a href="https://nodejs.org/en/">node.js</a>. Uruchom `npm install` w tym folderze, a następnie polecenie `npm start`.
