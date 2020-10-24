@@ -40,7 +40,7 @@ Example:
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTAzYWI4MmFhOWNmMWYwY2NiMzk5ZSIsImlhdCI6MTYwMzUyODUxOX0.jhWyNF3wbbhQt94D1ZUp0YNhBFqnjveiPefWzN1Sgfdshg"
 }
 ```
-* * Opis:
+* * Description:
 Logs the user in.
 * #### POST
 `https://healthjournalapi.herokuapp.com/auth/signup`
@@ -64,7 +64,7 @@ Logs the user in.
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTAzYWI4MmFhOWNmMWYwY2NiMzk5ZSIsImlhdCI6MTYwMzUyODUxOX0.jgfdlhgkdsfhgkjshgishgasd"
 }
 ```
-* * Opis:
+* * Description:
 Registers the user.
 ***
 ### Me
@@ -88,7 +88,7 @@ Registers the user.
 	"calorie":  1000
 }
 ```
-* * Opis:
+* * Description:
 Retrieves data about the user.
 * #### PUT
 
@@ -112,7 +112,7 @@ Retrieves data about the user.
 	"message": "Successfuly updated Informations"
 }
 ```
-* * Opis:
+* * Description:
 Updates data such as height, weight and BMI.
 ***
 ### Calories
@@ -130,7 +130,7 @@ Updates data such as height, weight and BMI.
 	"calories_range": 2500
 }
 ```
-* * Opis:
+* * Description:
 Gets calories and their range.
 * #### GET
 `https://healthjournalapi.herokuapp.com/calories/average`
@@ -145,7 +145,7 @@ Gets calories and their range.
 	"average": 1000
 }
 ```
-* * Opis:
+* * Description:
 Gets the average of calories for the last 7 days.
 * #### GET
 `https://healthjournalapi.herokuapp.com/calories/food`
@@ -168,7 +168,7 @@ Gets the average of calories for the last 7 days.
 	]
 }
 ```
-* * Opis:
+* * Description:
 Retrieves all of the user's products.
 * #### GET
 `https://healthjournalapi.herokuapp.com/calories/history`
@@ -191,7 +191,7 @@ Retrieves all of the user's products.
 	]
 }
 ```
-* * Opis:
+* * Description:
 Gets the user's calorie history.
 * #### POST 
 `https://healthjournalapi.herokuapp.com/calories/food`
@@ -213,7 +213,7 @@ Gets the user's calorie history.
 	"message":  "Succesfully created Product"
 }
 ```
-* * Opis:
+* * Description:
 Creates a new product.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/calories/eatfood/:id`
@@ -234,7 +234,7 @@ Creates a new product.
 	"message":  "Food was eaten"
 }
 ```
-* * Opis:
+* * Description:
 Updates user calories by adding product calories.
 * #### DELETE
 `https://healthjournalapi.herokuapp.com/calories/food/:id`
@@ -249,7 +249,7 @@ Updates user calories by adding product calories.
 	"message": "Succesfully deleted product"
 }
 ```
-* * Opis:
+* * Description:
 	Usuwa produkt.
 * #### PATCH
 `https://healthjournalapi.herokuapp.com/calories/intake`
@@ -270,7 +270,7 @@ Updates user calories by adding product calories.
 	"message":  "Succesfully patch caloriesIntake"
 }
 ```
-* * Opis:
+* * Description:
 Updates the user's calorie range.
 ***
 ### Sleep
@@ -287,7 +287,7 @@ Updates the user's calorie range.
 	"sleep": false	 
  }
  ```
- * * Opis
+ * * Description
 Gets whether the user is sleeping
  * #### GET
  `https://healthjournalapi.herokuapp.com/sleep/history`
@@ -302,7 +302,7 @@ Gets whether the user is sleeping
 	"sleep": false	 
  }
  ```
- * * Opis:
+ * * Description:
 Retrieves sleep histories.
  * #### GET
  `https://healthjournalapi.herokuapp.com/sleep/average`
@@ -318,7 +318,7 @@ Retrieves sleep histories.
 	"minutes":  20
 }
  ```
-  * * Opis:
+  * * Description:
 Gets your average sleep for 7 days.
  * #### PUT
 `https://healthjournalapi.herokuapp.com/sleep/gotosleep`
@@ -339,7 +339,7 @@ Gets your average sleep for 7 days.
 	"message":  "You sleep"
 }
 ```
- * * Opis:
+ * * Description:
 Updates the user's sleep state to `true`.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/sleep/wakeup`
@@ -361,7 +361,7 @@ Updates the user's sleep state to `true`.
 	"minutes":  3	
 }
 ```
- * * Opis:
+ * * Description:
 Updates the user's sleep state to `false`.
 ***
 ### Water
@@ -378,7 +378,7 @@ Updates the user's sleep state to `false`.
 	"cups":  0
 }
 ```
- * * Opis:
+ * * Description:
 Takes a number of cups of water.
 * #### GET 
 `https://healthjournalapi.herokuapp.com/water/history`
@@ -399,7 +399,7 @@ Takes a number of cups of water.
 	]
 }
 ```
-* * Opis:
+* * Description:
 Gets a history of the number of cups of water.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/water/plus`
@@ -420,7 +420,7 @@ Gets a history of the number of cups of water.
 	"message":  "updated cups"
 }
 ```
-* * Opis:
+* * Description:
 Updates the number of cups of water by adding one.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/water/minus`
@@ -441,7 +441,7 @@ Updates the number of cups of water by adding one.
 	"message":  "updated cups"
 }
 ```
-* * Opis:
+* * Description:
 Updates the number of cups of water by subtracting one.
 ## Technologies
 * <a href="https://nodejs.org/en/">node.js</a>
