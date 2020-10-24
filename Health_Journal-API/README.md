@@ -4,11 +4,13 @@
 
 #### API allows you to retrieve information and perform operations on a user who is in the database.
 
+🇺🇸 English | 🇵🇱 <a href="https://github.com/Patryk404/Health_Journal/blob/master/Health_Journal-API/README_PL.md">Click here to see Polish readme</a>
 ## Overview
 
 1. To use the API correctly, you need a `token` which you can get by logging in or registering.
 2. The API works in the `JSON` format.
 3. API calls will match the corresponding HTTP state codes for all requests.
+
 
 ## Authentication
 The API token must be sent as part of any request in the form of a `Authorization` header containing the `Bearer` text before the token value. More about tokenization can be found here: https://jwt.io/introduction/.
@@ -235,7 +237,7 @@ Creates a new product.
 }
 ```
 * * Description:
-Updates user calories by adding product calories.
+Updates calories by adding product calories.
 * #### DELETE
 `https://healthjournalapi.herokuapp.com/calories/food/:id`
 * * Headers:
@@ -250,7 +252,7 @@ Updates user calories by adding product calories.
 }
 ```
 * * Description:
-	Usuwa produkt.
+Removes the product
 * #### PATCH
 `https://healthjournalapi.herokuapp.com/calories/intake`
 * * Headers: 

@@ -3,6 +3,7 @@
 
 #### Aplikacja na androida, która kontroluje twoje podstawowe funkcje życiowe, takie jak: spanie, ilość kalorii oraz szklanki wody, liczy wskaźnik masy ciała. Śledzi również rozprzestrzenianie się groźnego wirusa, który obecnie panuje na całym świecie.
 
+🇺🇸 <a href="https://github.com/Patryk404/Health_Journal/blob/master/README.md">Click here to see English readme</a> | 🇵🇱 Polish
 ## O Projekcie
 Projekt ma na celu pomóc nam kontrolować funkcje życiowe takie jak dieta, czas snu, czy ilość wody. Użytkownik posiada swój katalog produktów, który może dowolnie modyfikować i dostosowywać do swoich potrzeb oraz diety. Ma on także możliwość kontroli ilości snu czy też wody. Automatyczna historia pozwala na zobaczenie ile w danym dniu spaliśmy, wypiliśmy lub zjedliśmy. Kalkulator wskaźnika masy ciała pozwala nam kontrolować, czy jesteśmy w dobrej kondycji. Użytkownik może również obserwować sytuację pandemiczną w różnych krajach.
 

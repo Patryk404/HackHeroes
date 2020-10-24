@@ -115,7 +115,7 @@ class Covid extends React.Component{
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                     {this.state.loading ? <ActivityIndicator style={styles.spinner} size="large" color="#0000ff"/> : null }
-                    <Icon onPress={()=>{alert("Remember to wear a mask and keep a social distance😷")}} name="help" size={38} color={"black"} style={{position:'absolute',right: 30,top: 30}}/>
+                    <Icon onPress={()=>{alert("Remember to wear a mask and keep a social distance😷")}} name="exclamation" size={45} color={"black"} style={{position:'absolute',right: 25,top: 25}}/>
                     <Icon onPress={this.updateAll} name="autorenew" size={40} color={"black"} style={{position:'absolute',right: 30,top: 80}}/>
                     <Text style={styles.textTitle}>Covid-19 Tracker</Text>
                     <View style={{width: '23%',position: 'absolute', top: 30,left:30}}>

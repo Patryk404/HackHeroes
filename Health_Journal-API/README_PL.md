@@ -3,6 +3,7 @@
 
 #### API pozwala na pobieranie informacji i wykonywanie operacji na użytkowniku, który znajduje się w bazie danych.
 
+🇺🇸 <a href="https://github.com/Patryk404/Health_Journal/blob/master/Health_Journal-API/README.md">Click here to see English readme</a> | 🇵🇱 Polish
 ## Przegląd
 1. Do poprawnego posługiwania się API, potrzebujesz `token`, który możesz uzyskać poprzez zalogowanie się lub zarejestrowanie.
 2. API operuje na formacie `JSON`.
@@ -37,7 +38,7 @@ Token API musi być wysłany jako część każdego żądania w postaci nagłów
 }
 ```
 * * Opis:
-Loguje użytkownika.
+loguje użytkownika.
 * #### POST
 `https://healthjournalapi.herokuapp.com/auth/signup`
 * * Nagłówki: 
@@ -61,7 +62,7 @@ Loguje użytkownika.
 }
 ```
 * * Opis:
-Rejestruje użytkownika.
+rejestruje użytkownika.
 ***
 ### Me
 * #### GET
@@ -85,7 +86,7 @@ Rejestruje użytkownika.
 }
 ```
 * * Opis:
-Pobiera dane na temat użytkownika.
+pobiera dane na temat użytkownika.
 * #### PUT
 
 `https://healthjournalapi.herokuapp.com/me`
@@ -109,7 +110,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Aktualizuje dane takie jak wzrost, waga oraz BMI.
+	aktualizuje dane takie jak wzrost, waga oraz BMI.
 ***
 ### Calories
 * #### GET
@@ -127,7 +128,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Pobiera kalorie oraz ich zakres.
+	pobiera kalorie oraz ich zakres.
 * #### GET
 `https://healthjournalapi.herokuapp.com/calories/average`
 * * Nagłówki: 
@@ -142,7 +143,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Pobiera Średnią kalorii z ostatnich 7 dni.
+	pobiera średnią kalorii z ostatnich 7 dni.
 * #### GET
 `https://healthjournalapi.herokuapp.com/calories/food`
 * * Nagłówki:
@@ -165,7 +166,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Pobiera wszystkie produkty użytkownika.
+	pobiera wszystkie produkty użytkownika.
 * #### GET
 `https://healthjournalapi.herokuapp.com/calories/history`
 * * Nagłówki:
@@ -188,7 +189,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Pobiera historie kalorii użytkownika.
+	pobiera historie kalorii użytkownika.
 * #### POST 
 `https://healthjournalapi.herokuapp.com/calories/food`
 * * Nagłówki:
@@ -210,7 +211,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Tworzy nowy produkt.
+	tworzy nowy produkt.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/calories/eatfood/:id`
 * * Nagłówki:
@@ -231,7 +232,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Aktualizuje kalorie użytkownika poprzez dodanie kalorii produktu.
+	aktualizuje kalorie użytkownika poprzez dodanie kalorii produktu.
 * #### DELETE
 `https://healthjournalapi.herokuapp.com/calories/food/:id`
 * * Nagłówki:
@@ -267,7 +268,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Aktualizuje zakres kalorii użytkownika.
+	aktualizuje zakres kalorii użytkownika.
 ***
 ### Sleep
 * #### GET
@@ -284,7 +285,7 @@ Pobiera dane na temat użytkownika.
  }
  ```
  * * Opis
-	 Pobiera, czy użytkownik śpi
+	 pobiera, czy użytkownik śpi
  * #### GET
  `https://healthjournalapi.herokuapp.com/sleep/history`
  * * Nagłówki: 
@@ -299,7 +300,7 @@ Pobiera dane na temat użytkownika.
  }
  ```
  * * Opis:
-	Pobiera historie snu.
+	pobiera historie snu.
  * #### GET
  `https://healthjournalapi.herokuapp.com/sleep/average`
  * * Nagłówki:
@@ -315,7 +316,7 @@ Pobiera dane na temat użytkownika.
 }
  ```
   * * Opis:
-	Pobiera średnią snu z 7 dni. 
+	pobiera średnią snu z 7 dni. 
  * #### PUT
 `https://healthjournalapi.herokuapp.com/sleep/gotosleep`
  * * Nagłówki:
@@ -336,7 +337,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
  * * Opis:
-	Aktualizuje stan snu użytkownika na `true`.
+	aktualizuje stan snu użytkownika na `true`.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/sleep/wakeup`
  * * Nagłówki:
@@ -358,7 +359,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
  * * Opis:
-	Aktualizuje stan snu użytkownika na `false`.
+	aktualizuje stan snu użytkownika na `false`.
 ***
 ### Water
 * #### GET
@@ -375,7 +376,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
  * * Opis:
-	Pobiera ilość kubków wody.
+	pobiera ilość kubków wody.
 * #### GET 
 `https://healthjournalapi.herokuapp.com/water/history`
  * * Nagłówki:
@@ -396,7 +397,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Pobiera historie ilości kubków wody.
+	pobiera historie ilości kubków wody.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/water/plus`
  * * Nagłówki:
@@ -417,7 +418,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Aktualizuje ilość kubków wody poprzez dodanie jednego.
+	aktualizuje ilość kubków wody poprzez dodanie jednego.
 * #### PUT
 `https://healthjournalapi.herokuapp.com/water/minus`
  * * Nagłówki:
@@ -438,7 +439,7 @@ Pobiera dane na temat użytkownika.
 }
 ```
 * * Opis:
-	Aktualizuje ilość kubków wody poprzez odjęcie jednego.
+	aktualizuje ilość kubków wody poprzez odjęcie jednego.
 
 ## Technologie
 * <a href="https://nodejs.org/en/">node.js</a>

@@ -5,10 +5,10 @@
 
   
 
-#### The android application, which controls your basic life functions such as sleeping, calories and a glasses of water, counts your body mass index. It also follows the spread of a dangerous virus that is now spreading around the world.
+#### The android application, which controls your basic life functions such as sleeping, calories, glasses of water and counts your body mass index. It also follows the spread of a dangerous virus that is now spreading around the world.
 
   
-
+🇺🇸 English | 🇵🇱 <a href="https://github.com/Patryk404/Health_Journal/blob/master/README_PL.md">Click here to see Polish readme</a>
 ## About Project
 
 The project aims to help us control vital functions such as diet, sleeping time and water quantity. You have your own product catalogue, which you can freely modify and adapt to your needs and diet. It also has the ability to control the amount of sleep or water. The automatic history allows you to see how much you have slept, drank or eaten on a given day. The body mass index calculator allows us to control whether we are in good shape. You can also observe a pandemic situation in different countries.
@@ -39,7 +39,7 @@ In my solution I decided to use <a href="https://reactnative.dev/">React Native<
 
 ## Installation
 
-The ready file `.apk` is located in the `build` folder, you only need to throw it on your android device and install. The finished solution uses the API, which is available at this link: https://healthjournalapi.herokuapp.com/.
+The ready file `.apk` is located in the `build` folder, you only need to upload it on your android device and install it. The finished solution uses the API, which is available at this link: https://healthjournalapi.herokuapp.com/.
 
 ## Account for testing purpose
 If you don't want to register in my app, you can use testing account: 
