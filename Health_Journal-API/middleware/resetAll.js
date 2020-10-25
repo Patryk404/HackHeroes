@@ -41,6 +41,6 @@ const reset_cups = async(account)=>{
 const reset_account = async(account)=>{
     account.calories = 0;
     account.cups_of_water = 0;
-    account.date = addHours(new Date(),2);
+    account.date = addHours(new Date(),1);
     await account.save();
 }

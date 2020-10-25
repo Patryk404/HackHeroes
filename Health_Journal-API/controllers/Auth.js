@@ -31,7 +31,7 @@ module.exports.signUp= async (req,res,next)=>{
     }
     const account = await Account.create({...req.body,
         password: await bcrypt.hash(req.body.password,12),
-        date: addHours(new Date(),2),
+        date: addHours(new Date(),1),
         cups_of_water: 0,
         calories: 0,
         calories_range: 2500,

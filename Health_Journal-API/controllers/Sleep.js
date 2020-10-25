@@ -28,7 +28,7 @@ module.exports.getAverage = async(req,res,next)=>{
 
 module.exports.startSleep= async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
-    account.start_sleep_date = addHours(new Date(),2); //because it's Poland time
+    account.start_sleep_date = addHours(new Date(),1); //because it's Poland time
     account.sleep = true;
     await account.save();
     res.status(200).json({
@@ -39,7 +39,7 @@ module.exports.startSleep= async(req,res,next)=>{
 module.exports.stopSleep=async(req,res,next)=>{
     const account = await Account.findOne({_id: req.userId});
     const start_sleep = account.start_sleep_date;
-    const now = addHours(new Date(),2);
+    const now = addHours(new Date(),1);
 
     if(account.sleep)
     {
